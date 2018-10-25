@@ -3,6 +3,8 @@ public class Card {
   private Suit suit;
   private int number;
 
+  Card() {}
+
   public Card(Suit suit, int number) {
     this.number = number;
     this.suit = suit;

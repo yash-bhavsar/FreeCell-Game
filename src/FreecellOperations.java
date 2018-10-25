@@ -12,7 +12,7 @@ public interface FreecellOperations {
    *
    * @return the deck
    */
-  HashSet<Card> getDeck();
+  List<Card> getDeck();
 
   /**
    * Start game.
