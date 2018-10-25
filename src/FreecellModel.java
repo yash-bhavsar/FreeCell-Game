@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -6,8 +6,12 @@ import java.util.List;
  */
 public class FreecellModel implements FreecellOperations {
   @Override
-  public ArrayList<Card> getDeck() {
-    return null;
+  public HashSet<Card> getDeck() {
+    HashSet<Card> deck = new HashSet<>();
+    for (int i = 0; i < 52; i++) {
+      if (i >= 0 && i <= 12)
+      Card card = new Card(i%13, )
+    }
   }
 
   @Override

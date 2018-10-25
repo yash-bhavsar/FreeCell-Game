@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ public interface FreecellOperations {
    *
    * @return the deck
    */
-  ArrayList<Card> getDeck();
+  HashSet<Card> getDeck();
 
   /**
    * Start game.
