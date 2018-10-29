@@ -23,7 +23,10 @@ public class FreecellModel implements FreecellOperations {
     for (int i = 0; i < 4; i++) {
       this.foundation.put(i, new LinkedList<>());
     }
-
+    open.put(1, null);
+    open.put(2, new Card(Suit.SPADE,5));
+    open.put(3, new Card(Suit.DIAMOND, 6));
+    open.put(4, new Card(Suit.CLUB, 7));
     this.gameState = "";
     this.gameOver = false;
   }
@@ -115,7 +118,57 @@ public class FreecellModel implements FreecellOperations {
 
   @Override
   public String getGameState() {
-    return this.gameState;
+    String cascadePileString = "";
+    String foundationPileString = "";
+    String openPileString = "";
+
+    // Foundation Pile code.
+    for (int i : foundation.keySet()) {
+      if (foundation.get(i).size() > 0) {
+        String tempFoundationString = "";
+        int k = i + 1;
+        for (int j = 0; j < foundation.get(i).size(); j++) {
+          Card c = foundation.get(i).get(j);
+          tempFoundationString += c.toString() + ", ";
+        }
+        tempFoundationString = tempFoundationString.replaceAll(", $", "").trim();
+        foundationPileString += "F" + k + ":" + " " + tempFoundationString + "\n";
+      } else {
+        int k = i + 1;
+        foundationPileString += "F" + k + ":" + "\n";
+      }
+    }
+
+    // Open pile code.
+    for (int i : open.keySet()) {
+      if (open.get(i) != null) {
+        String tempOpenString = "";
+        Card c = open.get(i);
+        tempOpenString += c.toString() + ", ";
+        tempOpenString = tempOpenString.replaceAll(", $", "").trim();
+        openPileString += "O" + i + ":" + " " + tempOpenString + "\n";
+      } else {
+        openPileString += "O" + i + ":" + "\n";
+      }
+    }
+
+    // Cascade pile code.
+    for (int i : cascade.keySet()) {
+      if (cascade.get(i).size() > 0) {
+        String tempString = "";
+        int k = i + 1;
+        for (int j = 0; j < cascade.get(i).size(); j++) {
+          Card c = cascade.get(i).get(j);
+          tempString += c.toString() + ", ";
+        }
+        tempString = tempString.replaceAll(", $", "").trim();
+        cascadePileString += "C" + k + ":" + " " + tempString + "\n";
+      } else {
+        int k = i + 1;
+        cascadePileString += "C" + k + ":" + "\n";
+      }
+    }
+    return this.gameState + foundationPileString + openPileString + cascadePileString;
   }
 
   @Override
