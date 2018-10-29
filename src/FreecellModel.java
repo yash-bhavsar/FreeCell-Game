@@ -3,30 +3,35 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * The type Freecell model.
  */
-public class FreecellModel implements FreecellOperations {
+public class FreecellModel implements FreecellOperations<Card> {
 
   private HashMap<Integer, LinkedList<Card>> cascade = new HashMap<>(8);
   private HashMap<Integer, LinkedList<Card>> foundation = new HashMap<>(4);
   private HashMap<Integer, Card> open = new HashMap<>(4);
 
+  private int noOfCascadePiles = 8;
+  private int noOfOpenPiles = 4;
   private String gameState;
   private boolean gameOver;
 
+  /**
+   * Instantiates a new Freecell model.
+   */
   FreecellModel() {
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < noOfCascadePiles; i++) {
       this.cascade.put(i, new LinkedList<>());
     }
     for (int i = 0; i < 4; i++) {
       this.foundation.put(i, new LinkedList<>());
     }
-    open.put(1, null);
-    open.put(2, new Card(Suit.SPADE,5));
-    open.put(3, new Card(Suit.DIAMOND, 6));
-    open.put(4, new Card(Suit.CLUB, 7));
+    for (int i = 0; i < noOfOpenPiles; i++) {
+      this.open.put(i, null);
+    }
     this.gameState = "";
     this.gameOver = false;
   }
@@ -37,62 +42,42 @@ public class FreecellModel implements FreecellOperations {
     for (int i = 0; i < 52; i++) {
       Card card;
       if (i <= 12) {
-        card = new Card(Suit.CLUB, i % 13);
+        card = new Card(Suit.CLUB, ((i % 13) + 1));
       } else if (i <= 25) {
-        card = new Card(Suit.DIAMOND, i % 13);
+        card = new Card(Suit.DIAMOND, ((i % 13) + 1));
       } else if (i <= 38) {
-        card = new Card(Suit.SPADE, i % 13);
+        card = new Card(Suit.SPADE, ((i % 13) + 1));
       } else {
-        card = new Card(Suit.HEART, i % 13);
+        card = new Card(Suit.HEART, ((i % 13) + 1));
       }
       deck.add(card);
     }
-    return deck;
+    return (deck);
   }
 
   @Override
-  public void startGame(List<Card> deck, boolean shuffle) {
-    if (deck.size() != 52) {
+  public void startGame(List<Card> deck, boolean shuffle) throws IllegalArgumentException {
+    List distinctDeck = deck.stream().map(Card::toString).distinct().collect(Collectors.toList());
+    if (deck.size() != distinctDeck.size() || distinctDeck.size() != 52) {
       throw new IllegalArgumentException("Deck is invalid");
     }
     deck = shuffle ? shuffle(deck) : deck;
 
     LinkedList<Card> c;
     for (int i = 0; i < deck.size(); i++) {
-      if (i % 8 == 0) {
-        c = this.cascade.get(0);
-        c.add(deck.get(i));
-        this.cascade.put(0, c);
-      } else if (i % 8 == 1) {
-        c = this.cascade.get(1);
-        c.add(deck.get(i));
-        this.cascade.put(1, c);
-      } else if (i % 8 == 2) {
-        c = this.cascade.get(2);
-        c.add(deck.get(i));
-        this.cascade.put(2, c);
-      } else if (i % 8 == 3) {
-        c = this.cascade.get(3);
-        c.add(deck.get(i));
-        this.cascade.put(3, c);
-      } else if (i % 8 == 4) {
-        c = this.cascade.get(4);
-        c.add(deck.get(i));
-        this.cascade.put(4, c);
-      } else if (i % 8 == 5) {
-        c = this.cascade.get(5);
-        c.add(deck.get(i));
-        this.cascade.put(5, c);
-      } else if (i % 8 == 6) {
-        c = this.cascade.get(6);
-        c.add(deck.get(i));
-        this.cascade.put(6, c);
-      } else if (i % 8 == 7) {
-        c = this.cascade.get(7);
-        c.add(deck.get(i));
-        this.cascade.put(7, c);
+      for (int j = 0; j < this.noOfCascadePiles; j++) {
+        if (i % noOfCascadePiles == j % noOfCascadePiles) {
+          c = this.cascade.get(j % noOfCascadePiles);
+          c.add(deck.get(i));
+          this.cascade.put(j % noOfCascadePiles, c);
+        }
       }
     }
+
+//    for (int i = 0; i < noOfCascadePiles; i++) {
+//      System.out.println(this.cascade.get(i));
+//    }
+//    exit();
   }
 
   /**
@@ -106,13 +91,96 @@ public class FreecellModel implements FreecellOperations {
     return deck;
   }
 
+  /**
+   *
+   *
+   * @param destCard
+   * @param sourceCard
+   * @return
+   */
+  private boolean checkAlternateSuit(Card destCard, Card sourceCard) {
+    if (destCard.getSuit() == Suit.SPADE || destCard.getSuit() == Suit.CLUB) {
+      return sourceCard.getSuit() == Suit.HEART || sourceCard.getSuit() == Suit.DIAMOND;
+    } else if (destCard.getSuit() == Suit.HEART || destCard.getSuit() == Suit.DIAMOND) {
+      return sourceCard.getSuit() == Suit.SPADE || sourceCard.getSuit() == Suit.CLUB;
+    } else {
+      return false;
+    }
+  }
+
   @Override
   public void move(PileType sourceType, int sourcePileNumber, int cardIndex, PileType destinationType, int destPileNumber) {
     if (sourceType == PileType.CASCADE && destinationType == PileType.CASCADE) {
-      LinkedList<Card> c1 = this.cascade.get(sourcePileNumber);
-      LinkedList<Card> c2 = this.cascade.get(destPileNumber);
-      Card c = c1.remove(cardIndex);
-      c2.add(c);
+      if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0 &&
+              destPileNumber < noOfCascadePiles) {
+        if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
+          Card c = this.cascade.get(sourcePileNumber).getLast();
+          Card dPLCard = this.cascade.get(destPileNumber).getLast();
+          if ((dPLCard.getNumber() - 1 == c.getNumber()) && checkAlternateSuit(dPLCard, c)) {
+            this.cascade.get(destPileNumber).add(c);
+            this.cascade.get(sourcePileNumber).removeLast();
+          }
+        }
+      }
+    } else if (sourceType == PileType.CASCADE && destinationType == PileType.OPEN) {
+      if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0 &&
+              destPileNumber < noOfOpenPiles) {
+        if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
+          Card c = this.cascade.get(sourcePileNumber).getLast();
+          this.open.putIfAbsent(destPileNumber, c);
+          this.cascade.get(sourcePileNumber).removeLast();
+        }
+      }
+    } else if (sourceType == PileType.CASCADE && destinationType == PileType.FOUNDATION) {
+      if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0 &&
+              destPileNumber < 4) {
+        if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
+          Card c = this.cascade.get(sourcePileNumber - 1).getLast();
+          Card dPLCard = this.foundation.get(destPileNumber - 1).getLast();
+          if ((dPLCard.getNumber() + 1 == c.getNumber()) && dPLCard.getSuit() == c.getSuit()) {
+            this.foundation.get(destPileNumber).add(c);
+            this.cascade.get(sourcePileNumber).removeLast();
+            for (int i = 0; i < this.foundation.size(); i++) {
+              Card lastCard = this.foundation.get(i).getLast();
+              if (this.foundation.get(i).size() == 13 && lastCard.getNumber() == 13) {
+                this.gameOver = true;
+              }
+            }
+          } else {
+            throw new IllegalArgumentException("Invalid Card");
+          }
+        } else {
+          throw new IllegalArgumentException("Invalid Card Index");
+        }
+      } else {
+        throw new IllegalArgumentException("Invalid Pile Number");
+      }
+    } else if (sourceType == PileType.OPEN && destinationType == PileType.CASCADE) {
+      if (sourcePileNumber >= 0 && sourcePileNumber < noOfOpenPiles && destPileNumber >= 0 &&
+              destPileNumber < noOfCascadePiles) {
+        Card c = this.open.get(sourcePileNumber);
+        Card dPLCard = this.cascade.get(destPileNumber).getLast();
+        if ((dPLCard.getNumber() - 1 == c.getNumber()) && checkAlternateSuit(dPLCard, c)) {
+          this.cascade.get(destPileNumber).add(c);
+          this.open.put(sourcePileNumber, null);
+        }
+      }
+    } else if (sourceType == PileType.OPEN && destinationType == PileType.FOUNDATION) {
+      if (sourcePileNumber >= 0 && sourcePileNumber < 4 && destPileNumber >= 0 &&
+              destPileNumber < noOfCascadePiles) {
+        Card c = this.open.get(sourcePileNumber);
+        Card dPLCard = this.foundation.get(destPileNumber).getLast();
+        if ((dPLCard.getNumber() + 1 == c.getNumber()) && dPLCard.getSuit() == c.getSuit()) {
+          this.foundation.get(destPileNumber).add(c);
+          this.open.put(sourcePileNumber, null);
+          for (int i = 0; i < this.foundation.size(); i++) {
+            Card lastCard = this.foundation.get(i).getLast();
+            if (this.foundation.get(i).size() == 13 && lastCard.getNumber() == 13) {
+              this.gameOver = true;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -173,6 +241,7 @@ public class FreecellModel implements FreecellOperations {
 
   @Override
   public boolean isGameOver() {
-    return false;
+    boolean gO = this.gameOver;
+    return gO;
   }
 }
