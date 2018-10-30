@@ -85,12 +85,10 @@ public class FreecellModel implements FreecellOperations<Card> {
       }
     }
 
-    this.gameStarted = true;
-
-    for (int i = 0; i < noOfCascadePiles; i++) {
-      System.out.println(this.cascade.get(i));
-    }
-    exit();
+//    for (int i = 0; i < noOfCascadePiles; i++) {
+//      System.out.println(this.cascade.get(i));
+//    }
+//    exit();
   }
 
   /**
@@ -247,14 +245,15 @@ public class FreecellModel implements FreecellOperations<Card> {
 
     // Open pile code.
     for (int i : open.keySet()) {
+      int k = i + 1;
       if (open.get(i) != null) {
         String tempOpenString = "";
         Card c = open.get(i);
         tempOpenString += c.toString() + ", ";
         tempOpenString = tempOpenString.replaceAll(", $", "").trim();
-        openPileString += "O" + i + ":" + " " + tempOpenString + "\n";
+        openPileString += "O" + k + ":" + " " + tempOpenString + "\n";
       } else {
-        openPileString += "O" + i + ":" + "\n";
+        openPileString += "O" + k + ":" + "\n";
       }
     }
 
@@ -274,7 +273,7 @@ public class FreecellModel implements FreecellOperations<Card> {
         cascadePileString += "C" + k + ":" + "\n";
       }
     }
-    return this.gameState + foundationPileString + openPileString + cascadePileString;
+    return this.gameState + foundationPileString + openPileString + cascadePileString.trim();
   }
 
   @Override
