@@ -119,8 +119,14 @@ public class FreecellModel implements FreecellOperations<Card> {
           if ((dPLCard.getNumber() - 1 == c.getNumber()) && checkAlternateSuit(dPLCard, c)) {
             this.cascade.get(destPileNumber).add(c);
             this.cascade.get(sourcePileNumber).removeLast();
+          } else {
+            throw new IllegalArgumentException("Invalid Card");
           }
+        } else {
+          throw new IllegalArgumentException("Invalid card index");
         }
+      } else {
+        throw new IllegalArgumentException("Invalid pile number");
       }
     } else if (sourceType == PileType.CASCADE && destinationType == PileType.OPEN) {
       if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0 &&
@@ -129,7 +135,11 @@ public class FreecellModel implements FreecellOperations<Card> {
           Card c = this.cascade.get(sourcePileNumber).getLast();
           this.open.putIfAbsent(destPileNumber, c);
           this.cascade.get(sourcePileNumber).removeLast();
+        } else {
+          throw new IllegalArgumentException("Invalid card index");
         }
+      } else {
+        throw new IllegalArgumentException("Invalid pile number");
       }
     } else if (sourceType == PileType.CASCADE && destinationType == PileType.FOUNDATION) {
       if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0 &&
@@ -163,7 +173,11 @@ public class FreecellModel implements FreecellOperations<Card> {
         if ((dPLCard.getNumber() - 1 == c.getNumber()) && checkAlternateSuit(dPLCard, c)) {
           this.cascade.get(destPileNumber).add(c);
           this.open.put(sourcePileNumber, null);
+        } else {
+          throw new IllegalArgumentException("Invalid card");
         }
+      } else {
+        throw new IllegalArgumentException("Invalid pile number");
       }
     } else if (sourceType == PileType.OPEN && destinationType == PileType.FOUNDATION) {
       if (sourcePileNumber >= 0 && sourcePileNumber < 4 && destPileNumber >= 0 &&
@@ -179,7 +193,11 @@ public class FreecellModel implements FreecellOperations<Card> {
               this.gameOver = true;
             }
           }
+        } else {
+          throw new IllegalArgumentException("Invalid card");
         }
+      } else {
+        throw new IllegalArgumentException("Invalid pile number");
       }
     }
   }

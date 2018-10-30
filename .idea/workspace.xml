@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="b6923166-3440-40de-b24b-e267e2266f56" name="Default Changelist" comment="">
 <<<<<<< HEAD
 =======
@@ -15,6 +16,9 @@
       <change beforePath="$PROJECT_DIR$/src/PileType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PileType.java" afterDir="false" />
 >>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
     </list>
+=======
+    <list default="true" id="b6923166-3440-40de-b24b-e267e2266f56" name="Default Changelist" comment="" />
+>>>>>>> c8544776c9b44620d0d3d1e14aedec9e7530e9ab
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -106,9 +110,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FreecellModel.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state relative-caret-position="378">
               <caret line="155" column="36" lean-forward="true" selection-start-line="155" selection-start-column="36" selection-end-line="155" selection-end-column="36" />
@@ -116,6 +121,10 @@
             <state relative-caret-position="300">
               <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
 >>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
+=======
+            <state relative-caret-position="2008">
+              <caret line="243" column="31" lean-forward="true" selection-start-line="243" selection-start-column="31" selection-end-line="243" selection-end-column="31" />
+>>>>>>> c8544776c9b44620d0d3d1e14aedec9e7530e9ab
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -160,7 +169,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PileType.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -258,9 +267,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540800643489" />
 =======
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540853940154" />
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540855582325" />
+>>>>>>> c8544776c9b44620d0d3d1e14aedec9e7530e9ab
     <property name="create.test.in.the.same.root" value="true" />
 >>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -434,6 +447,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Suit.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -453,13 +467,22 @@
             <element signature="imports" expanded="true" />
           </folding>
 >>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
-        </state>
-      </provider>
-    </entry>
+=======
     <entry file="file://$PROJECT_DIR$/src/PileType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="57" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
+>>>>>>> c8544776c9b44620d0d3d1e14aedec9e7530e9ab
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/FreecellModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2008">
+          <caret line="243" column="31" lean-forward="true" selection-start-line="243" selection-start-column="31" selection-end-line="243" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
