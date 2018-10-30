@@ -14,14 +14,15 @@ import static javafx.application.Platform.exit;
  */
 public class FreecellModel implements FreecellOperations<Card> {
 
-  private HashMap<Integer, LinkedList<Card>> cascade = new HashMap<>(8);
-  private HashMap<Integer, LinkedList<Card>> foundation = new HashMap<>(4);
-  private HashMap<Integer, Card> open = new HashMap<>(4);
+  private HashMap<Integer, LinkedList<Card>> cascade = new HashMap<>();
+  private HashMap<Integer, LinkedList<Card>> foundation = new HashMap<>();
+  private HashMap<Integer, Card> open = new HashMap<>();
 
   private int noOfCascadePiles;
   private int noOfOpenPiles;
   private String gameState;
   private boolean gameOver;
+  private boolean gameStarted;
 
   /**
    * Instantiates a new Freecell model.
@@ -43,6 +44,7 @@ public class FreecellModel implements FreecellOperations<Card> {
     }
     this.gameState = "";
     this.gameOver = false;
+    this.gameStarted = false;
   }
 
   @Override
@@ -83,6 +85,8 @@ public class FreecellModel implements FreecellOperations<Card> {
       }
     }
 
+    this.gameStarted = true;
+
     for (int i = 0; i < noOfCascadePiles; i++) {
       System.out.println(this.cascade.get(i));
     }
@@ -119,6 +123,9 @@ public class FreecellModel implements FreecellOperations<Card> {
 
   @Override
   public void move(PileType sourceType, int sourcePileNumber, int cardIndex, PileType destinationType, int destPileNumber) {
+    if (!this.gameStarted) {
+      throw new IllegalStateException("Game not started yet so cannot make a move.");
+    }
     if (sourceType == PileType.CASCADE && destinationType == PileType.CASCADE) {
       if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0 &&
               destPileNumber < noOfCascadePiles) {
@@ -213,6 +220,10 @@ public class FreecellModel implements FreecellOperations<Card> {
 
   @Override
   public String getGameState() {
+    if (!this.gameStarted) {
+      return "";
+    }
+
     String cascadePileString = "";
     String foundationPileString = "";
     String openPileString = "";
