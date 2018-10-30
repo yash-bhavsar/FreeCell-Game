@@ -85,6 +85,8 @@ public class FreecellModel implements FreecellOperations<Card> {
       }
     }
 
+    this.gameStarted = true;
+
 //    for (int i = 0; i < noOfCascadePiles; i++) {
 //      System.out.println(this.cascade.get(i));
 //    }
