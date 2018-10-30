@@ -194,7 +194,7 @@ public class FreecellModel implements FreecellOperations<Card> {
         if ((dPLCard.getNumber() + 1 == c.getNumber()) && dPLCard.getSuit() == c.getSuit()) {
           this.foundation.get(destPileNumber).add(c);
           this.open.put(sourcePileNumber, null);
-          for (int i = 0; i < this.foundation.size(); i++) {
+          for (int i = 0; i < 4; i++) {
             Card lastCard = this.foundation.get(i).getLast();
             if (this.foundation.get(i).size() == 13 && lastCard.getNumber() == 13) {
               this.gameOver = true;
@@ -266,8 +266,7 @@ public class FreecellModel implements FreecellOperations<Card> {
 
   @Override
   public boolean isGameOver() {
-    boolean gO = this.gameOver;
-    return gO;
+    return this.gameOver;
   }
 
   /**

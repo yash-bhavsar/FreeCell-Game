@@ -1,602 +1,380 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="b6923166-3440-40de-b24b-e267e2266f56" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FreecellModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/FreecellModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FreecellOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/FreecellOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PileType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/PileType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Suit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/Suit.java" afterDir="false" />
-    </list>
-=======
-<<<<<<< HEAD
-    <list default="true" id="b6923166-3440-40de-b24b-e267e2266f56" name="Default Changelist" comment="">
-<<<<<<< HEAD
-=======
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FreecellModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FreecellModel.java" afterDir="false" />
-<<<<<<< HEAD
-=======
-      <change beforePath="$PROJECT_DIR$/src/FreecellOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FreecellOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PileType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PileType.java" afterDir="false" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
-    </list>
-=======
-    <list default="true" id="b6923166-3440-40de-b24b-e267e2266f56" name="Default Changelist" comment="" />
->>>>>>> c8544776c9b44620d0d3d1e14aedec9e7530e9ab
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-    <ignored path="$PROJECT_DIR$/out/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="1072420729">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.15" value="1" />
-          <entry key="project.open.time.38" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="3" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="7" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="7" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="4065" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="4065" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="-1683230033">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.1" value="2" />
-          <entry key="project.open.time.10" value="1" />
-          <entry key="project.open.time.11" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="5" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="3180" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="3180" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperations.java">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="105">
-              <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
-=======
-<<<<<<< HEAD
-            <state relative-caret-position="210">
-              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-=======
-            <state relative-caret-position="225">
-              <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="-57">
-              <caret line="253" column="2" lean-forward="true" selection-start-line="253" selection-start-column="2" selection-end-line="253" selection-end-column="2" />
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <state relative-caret-position="378">
-              <caret line="155" column="36" lean-forward="true" selection-start-line="155" selection-start-column="36" selection-end-line="155" selection-end-column="36" />
-=======
-            <state relative-caret-position="300">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
-=======
-            <state relative-caret-position="2008">
-              <caret line="243" column="31" lean-forward="true" selection-start-line="243" selection-start-column="31" selection-end-line="243" selection-end-column="31" />
->>>>>>> c8544776c9b44620d0d3d1e14aedec9e7530e9ab
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperationsBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="41" lean-forward="true" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/freecell/model/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state>
-              <caret column="22" selection-start-column="22" selection-end-column="22" />
-=======
-            <state relative-caret-position="120">
-<<<<<<< HEAD
-              <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-=======
-              <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/freecell/model/Card.java">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="165">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-=======
-            <state relative-caret-position="-75">
-<<<<<<< HEAD
-              <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-=======
-              <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+    <component name="ChangeListManager">
+        <list default="true" id="b6923166-3440-40de-b24b-e267e2266f56" name="Default Changelist" comment="">
+            <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+            <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/Card.java" afterDir="false" />
+            <change beforePath="$PROJECT_DIR$/src/FreecellModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/FreecellModel.java" afterDir="false" />
+            <change beforePath="$PROJECT_DIR$/src/FreecellOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/FreecellOperations.java" afterDir="false" />
+            <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/Main.java" afterDir="false" />
+            <change beforePath="$PROJECT_DIR$/src/PileType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/PileType.java" afterDir="false" />
+            <change beforePath="$PROJECT_DIR$/src/Suit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/Suit.java" afterDir="false" />
+        </list>
+        <ignored path="$PROJECT_DIR$/out/" />
+        <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+        <option name="SHOW_DIALOG" value="false" />
+        <option name="HIGHLIGHT_CONFLICTS" value="true" />
+        <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+        <option name="LAST_RESOLUTION" value="IGNORE" />
+    </component>
+    <component name="FUSProjectUsageTrigger">
+        <session id="1072420729">
+            <usages-collector id="statistics.lifecycle.project">
+                <counts>
+                    <entry key="project.closed" value="1" />
+                    <entry key="project.open.time.15" value="1" />
+                    <entry key="project.open.time.38" value="1" />
+                    <entry key="project.open.time.8" value="1" />
+                    <entry key="project.opened" value="3" />
+                </counts>
+            </usages-collector>
+            <usages-collector id="statistics.file.extensions.open">
+                <counts>
+                    <entry key="java" value="7" />
+                </counts>
+            </usages-collector>
+            <usages-collector id="statistics.file.types.open">
+                <counts>
+                    <entry key="JAVA" value="7" />
+                </counts>
+            </usages-collector>
+            <usages-collector id="statistics.file.extensions.edit">
+                <counts>
+                    <entry key="java" value="4065" />
+                </counts>
+            </usages-collector>
+            <usages-collector id="statistics.file.types.edit">
+                <counts>
+                    <entry key="JAVA" value="4065" />
+                </counts>
+            </usages-collector>
+        </session>
+        <session id="-1683230033">
+            <usages-collector id="statistics.lifecycle.project">
+                <counts>
+                    <entry key="project.open.time.1" value="1" />
+                    <entry key="project.opened" value="1" />
+                </counts>
+            </usages-collector>
+            <usages-collector id="statistics.file.extensions.edit">
+                <counts>
+                    <entry key="java" value="1604" />
+                </counts>
+            </usages-collector>
+            <usages-collector id="statistics.file.types.edit">
+                <counts>
+                    <entry key="JAVA" value="1604" />
+                </counts>
+            </usages-collector>
+        </session>
+    </component>
+    <component name="FileEditorManager">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+            <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperations.java">
+                    <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="105">
+                            <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+                        </state>
+                    </provider>
+                </entry>
+            </file>
+            <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellModel.java">
+                    <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="-57">
+                            <caret line="253" column="2" lean-forward="true" selection-start-line="253" selection-start-column="2" selection-end-line="253" selection-end-column="2" />
+                            <folding>
+                                <element signature="imports" expanded="true" />
+                            </folding>
+                        </state>
+                    </provider>
+                </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperationsBuilder.java">
+                    <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="75">
+                            <caret line="5" column="41" lean-forward="true" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
+                        </state>
+                    </provider>
+                </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/freecell/model/Main.java">
+                    <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="120">
+                            <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+                        </state>
+                    </provider>
+                </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/freecell/model/Card.java">
+                    <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="-75">
+                            <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+                        </state>
+                    </provider>
+                </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/freecell/model/Suit.java">
+                    <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="285">
+                            <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+                        </state>
+                    </provider>
+                </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/freecell/model/PileType.java">
+                    <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="120">
+                            <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
+                        </state>
+                    </provider>
+                </entry>
+            </file>
+        </leaf>
+    </component>
+    <component name="FileTemplateManagerImpl">
+        <option name="RECENT_TEMPLATES">
+            <list>
+                <option value="Enum" />
+                <option value="Class" />
+                <option value="Interface" />
+            </list>
+        </option>
+    </component>
+    <component name="Git.Settings">
+        <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    </component>
+    <component name="IdeDocumentHistory">
+        <option name="CHANGED_PATHS">
+            <list>
+                <option value="$PROJECT_DIR$/src/Suit.java" />
+                <option value="$PROJECT_DIR$/src/PileType.java" />
+                <option value="$PROJECT_DIR$/src/FreecellOperations.java" />
+                <option value="$PROJECT_DIR$/src/Main.java" />
+                <option value="$PROJECT_DIR$/src/Card.java" />
+                <option value="$PROJECT_DIR$/src/FreecellModel.java" />
+                <option value="$PROJECT_DIR$/src/freecell/model/FreecellOperationsBuilder.java" />
+                <option value="$PROJECT_DIR$/src/freecell/model/FreecellOperations.java" />
+                <option value="$PROJECT_DIR$/src/freecell/model/FreecellModel.java" />
+            </list>
+        </option>
+    </component>
+    <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+    <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+    <component name="JsGulpfileManager">
+        <detection-done>true</detection-done>
+        <sorting>DEFINITION_ORDER</sorting>
+    </component>
+    <component name="ProjectFrameBounds" extendedState="6">
+        <option name="x" value="10" />
+        <option name="y" value="50" />
+        <option name="width" value="1346" />
+        <option name="height" value="698" />
+    </component>
+    <component name="ProjectLevelVcsManager">
+        <ConfirmationsSetting value="1" id="Add" />
+    </component>
+    <component name="ProjectView">
+        <navigator proportions="" version="1">
+            <foldersAlwaysOnTop value="true" />
+        </navigator>
+        <panes>
+            <pane id="PackagesPane" />
+            <pane id="Scope" />
+            <pane id="ProjectPane">
+                <subPane>
+                    <expand>
+                        <path>
+                            <item name="FreeCell-Game" type="b2602c69:ProjectViewProjectNode" />
+                            <item name="FreeCell-Game" type="462c0819:PsiDirectoryNode" />
+                        </path>
+                        <path>
+                            <item name="FreeCell-Game" type="b2602c69:ProjectViewProjectNode" />
+                            <item name="FreeCell-Game" type="462c0819:PsiDirectoryNode" />
+                            <item name="src" type="462c0819:PsiDirectoryNode" />
+                        </path>
+                        <path>
+                            <item name="FreeCell-Game" type="b2602c69:ProjectViewProjectNode" />
+                            <item name="FreeCell-Game" type="462c0819:PsiDirectoryNode" />
+                            <item name="src" type="462c0819:PsiDirectoryNode" />
+                            <item name="model" type="462c0819:PsiDirectoryNode" />
+                        </path>
+                    </expand>
+                    <select />
+                </subPane>
+            </pane>
+        </panes>
+    </component>
+    <component name="PropertiesComponent">
+        <property name="WebServerToolWindowFactoryState" value="false" />
+        <property name="aspect.path.notification.shown" value="true" />
+        <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540865163409" />
+        <property name="create.test.in.the.same.root" value="true" />
+        <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+        <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    </component>
+    <component name="RecentsManager">
+        <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+            <recent name="freecell.model" />
+        </key>
+    </component>
+    <component name="RunDashboard">
+        <option name="ruleStates">
+            <list>
+                <RuleState>
+                    <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+                </RuleState>
+                <RuleState>
+                    <option name="name" value="StatusDashboardGroupingRule" />
+                </RuleState>
+            </list>
+        </option>
+    </component>
+    <component name="RunManager">
+        <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+            <option name="MAIN_CLASS_NAME" value="freecell.model.Main" />
+            <module name="FreeCell-Game" />
+            <method v="2">
+                <option name="Make" enabled="true" />
+            </method>
+        </configuration>
+        <recent_temporary>
+            <list>
+                <item itemvalue="Application.Main" />
+            </list>
+        </recent_temporary>
+    </component>
+    <component name="SvnConfiguration">
+        <configuration />
+    </component>
+    <component name="TaskManager">
+        <task active="true" id="Default" summary="Default task">
+            <changelist id="b6923166-3440-40de-b24b-e267e2266f56" name="Default Changelist" comment="" />
+            <created>1540421175876</created>
+            <option name="number" value="Default" />
+            <option name="presentableId" value="Default" />
+            <updated>1540421175876</updated>
+            <workItem from="1540441120077" duration="4608000" />
+        </task>
+        <servers />
+    </component>
+    <component name="TimeTrackingManager">
+        <option name="totallyTimeSpent" value="4608000" />
+    </component>
+    <component name="ToolWindowManager">
+        <frame x="0" y="30" width="1366" height="738" extended-state="6" />
+        <layout>
+            <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22121212" />
+            <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+            <window_info id="Image Layers" order="2" />
+            <window_info id="Designer" order="3" />
+            <window_info id="UI Designer" order="4" />
+            <window_info id="Capture Tool" order="5" />
+            <window_info id="Favorites" order="6" side_tool="true" />
+            <window_info anchor="bottom" id="Messages" order="0" />
+            <window_info anchor="bottom" id="Message" order="1" />
+            <window_info anchor="bottom" id="Find" order="2" weight="0.32894737" />
+            <window_info anchor="bottom" id="Run" order="3" weight="0.32894737" />
+            <window_info anchor="bottom" id="Debug" order="4" weight="0.39967105" />
+            <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+            <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+            <window_info anchor="bottom" id="TODO" order="7" />
+            <window_info anchor="bottom" id="Terminal" order="8" />
+            <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+            <window_info anchor="bottom" id="Version Control" order="10" />
+            <window_info anchor="bottom" id="Code comment" order="11" />
+            <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+            <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+            <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+            <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+            <window_info anchor="right" id="Palette" order="3" />
+            <window_info anchor="right" id="Capture Analysis" order="4" />
+            <window_info anchor="right" id="Theme Preview" order="5" />
+            <window_info anchor="right" id="Palette&#9;" order="6" />
+            <window_info anchor="right" id="Maven Projects" order="7" />
+            <window_info anchor="right" id="Database" order="8" />
+        </layout>
+    </component>
+    <component name="TypeScriptGeneratedFilesManager">
+        <option name="version" value="1" />
+    </component>
+    <component name="VcsContentAnnotationSettings">
+        <option name="myLimit" value="2678400000" />
+    </component>
+    <component name="editorHistoryManager">
         <entry file="file://$PROJECT_DIR$/src/freecell/model/Suit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-            </state>
-          </provider>
+            <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="285">
+                    <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+                </state>
+            </provider>
         </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/freecell/model/Main.java">
+            <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="120">
+                    <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+                </state>
+            </provider>
+        </entry>
+        <entry file="file://$PROJECT_DIR$/src/freecell/model/Card.java">
+            <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-75">
+                    <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+                </state>
+            </provider>
+        </entry>
         <entry file="file://$PROJECT_DIR$/src/freecell/model/PileType.java">
-          <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-            <state relative-caret-position="150">
-              <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-=======
-            <state relative-caret-position="120">
-<<<<<<< HEAD
-              <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
-=======
-              <caret line="8" column="57" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-            </state>
-          </provider>
+            <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="120">
+                    <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
+                </state>
+            </provider>
         </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Enum" />
-        <option value="Class" />
-        <option value="Interface" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/Suit.java" />
-        <option value="$PROJECT_DIR$/src/PileType.java" />
-        <option value="$PROJECT_DIR$/src/FreecellOperations.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/Card.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/FreecellModel.java" />
-        <option value="$PROJECT_DIR$/src/freecell/model/FreecellOperationsBuilder.java" />
-        <option value="$PROJECT_DIR$/src/freecell/model/FreecellOperations.java" />
-        <option value="$PROJECT_DIR$/src/freecell/model/FreecellModel.java" />
-      </list>
-    </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-<<<<<<< HEAD
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
-=======
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="10" />
-    <option name="y" value="50" />
-    <option name="width" value="1346" />
-    <option name="height" value="698" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
-  </component>
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-<<<<<<< HEAD
-=======
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="FreeCell-Game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FreeCell-Game" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FreeCell-Game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FreeCell-Game" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FreeCell-Game" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FreeCell-Game" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-<<<<<<< HEAD
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-=======
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
-    </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-<<<<<<< HEAD
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540865163409" />
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540800643489" />
-=======
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540853940154" />
-=======
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540855582325" />
->>>>>>> c8544776c9b44620d0d3d1e14aedec9e7530e9ab
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-    <property name="create.test.in.the.same.root" value="true" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="freecell.model" />
-    </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="freecell.model.Main" />
-      <module name="FreeCell-Game" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="b6923166-3440-40de-b24b-e267e2266f56" name="Default Changelist" comment="" />
-      <created>1540421175876</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1540421175876</updated>
-      <workItem from="1540441120077" duration="4862000" />
-      <workItem from="1540782151645" duration="41000" />
-      <workItem from="1540782213761" duration="5943000" />
-      <workItem from="1540802855084" duration="598000" />
-      <workItem from="1540852020233" duration="551000" />
-    </task>
-    <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11995000" />
-  </component>
-  <component name="ToolWindowManager">
-<<<<<<< HEAD
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.2639485" />
-=======
-    <frame x="0" y="30" width="1366" height="738" extended-state="6" />
-    <layout>
-<<<<<<< HEAD
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22121212" />
-=======
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22121212" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-<<<<<<< HEAD
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32891566" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Code comment" order="10" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="12" />
-=======
-      <window_info anchor="bottom" id="Messages" order="0" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.32894737" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.32894737" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.39967105" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Code comment" order="11" />
-      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Palette&#9;" order="6" />
-      <window_info anchor="right" id="Maven Projects" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
-    </layout>
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/freecell/model/Suit.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="285">
-          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
-=======
-<<<<<<< HEAD
-        <state relative-caret-position="210">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/FreecellModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="155" column="36" lean-forward="true" selection-start-line="155" selection-start-column="36" selection-end-line="155" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-=======
-        <state relative-caret-position="225">
-          <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/freecell/model/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="120">
-          <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-=======
-        <state relative-caret-position="285">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/freecell/model/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/freecell/model/PileType.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state>
-          <caret column="22" selection-start-column="22" selection-end-column="22" />
-=======
-        <state relative-caret-position="120">
-<<<<<<< HEAD
-          <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
-=======
-          <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperationsBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="75">
-          <caret line="5" column="41" lean-forward="true" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
-=======
-<<<<<<< HEAD
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-=======
-        <state relative-caret-position="-75">
-          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/Suit.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="315">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperations.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="105">
-          <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
-=======
-        <state relative-caret-position="150">
-          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-=======
-        <state relative-caret-position="300">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
->>>>>>> 313c4bc95497e326d3d0caf27ebf2fe85c29c464
-=======
-    <entry file="file://$PROJECT_DIR$/src/PileType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="57" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
->>>>>>> c8544776c9b44620d0d3d1e14aedec9e7530e9ab
->>>>>>> 5510c26b09a4f96eb9d549e56ee487c37e69bccc
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-57">
-          <caret line="253" column="2" lean-forward="true" selection-start-line="253" selection-start-column="2" selection-end-line="253" selection-end-column="2" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
-  </component>
+        <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperationsBuilder.java">
+            <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="75">
+                    <caret line="5" column="41" lean-forward="true" selection-start-line="5" selection-start-column="41" selection-end-line="5" selection-end-column="41" />
+                </state>
+            </provider>
+        </entry>
+        <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperations.java">
+            <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="105">
+                    <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+                </state>
+            </provider>
+        </entry>
+        <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellModel.java">
+            <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-57">
+                    <caret line="253" column="2" lean-forward="true" selection-start-line="253" selection-start-column="2" selection-end-line="253" selection-end-column="2" />
+                    <folding>
+                        <element signature="imports" expanded="true" />
+                    </folding>
+                </state>
+            </provider>
+        </entry>
+    </component>
+    <component name="masterDetails">
+        <states>
+            <state key="ProjectJDKs.UI">
+                <settings>
+                    <last-edited>1.8</last-edited>
+                    <splitter-proportions>
+                        <option name="proportions">
+                            <list>
+                                <option value="0.2" />
+                            </list>
+                        </option>
+                    </splitter-proportions>
+                </settings>
+            </state>
+        </states>
+    </component>
 </project>
