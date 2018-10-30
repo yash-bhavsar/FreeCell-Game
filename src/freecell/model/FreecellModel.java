@@ -7,6 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static javafx.application.Platform.exit;
+
 /**
  * The type Freecell model.
  */
@@ -81,10 +83,10 @@ public class FreecellModel implements FreecellOperations<Card> {
       }
     }
 
-//    for (int i = 0; i < noOfCascadePiles; i++) {
-//      System.out.println(this.cascade.get(i));
-//    }
-//    exit();
+    for (int i = 0; i < noOfCascadePiles; i++) {
+      System.out.println(this.cascade.get(i));
+    }
+    exit();
   }
 
   /**
