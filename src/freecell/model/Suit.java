@@ -1,5 +1,7 @@
+package freecell.model;
+
 /**
- * The enum Suit.
+ * The enum freecell.model.Suit.
  */
 public enum Suit {
   /**

@@ -1,3 +1,5 @@
+package freecell.model;
+
 public final class Card {
 
   private final Suit suit;
@@ -5,7 +7,7 @@ public final class Card {
 
   public Card(Suit suit, int number) {
     if (number > 13) {
-      throw new IllegalArgumentException("Card number invalid");
+      throw new IllegalArgumentException("freecell.model.Card number invalid");
     }
     this.number = number;
     this.suit = suit;

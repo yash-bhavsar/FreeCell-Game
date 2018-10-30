@@ -1,3 +1,5 @@
+package freecell.model;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,15 +16,20 @@ public class FreecellModel implements FreecellOperations<Card> {
   private HashMap<Integer, LinkedList<Card>> foundation = new HashMap<>(4);
   private HashMap<Integer, Card> open = new HashMap<>(4);
 
-  private int noOfCascadePiles = 8;
-  private int noOfOpenPiles = 4;
+  private int noOfCascadePiles;
+  private int noOfOpenPiles;
   private String gameState;
   private boolean gameOver;
 
   /**
    * Instantiates a new Freecell model.
+   *
+   * @param noOfCascadePiles the no of cascade piles
+   * @param noOfOpenPiles    the no of open piles
    */
-  FreecellModel() {
+  public FreecellModel(int noOfCascadePiles, int noOfOpenPiles) {
+    this.noOfCascadePiles = noOfCascadePiles;
+    this.noOfOpenPiles = noOfOpenPiles;
     for (int i = 0; i < noOfCascadePiles; i++) {
       this.cascade.put(i, new LinkedList<>());
     }
@@ -147,10 +154,10 @@ public class FreecellModel implements FreecellOperations<Card> {
               }
             }
           } else {
-            throw new IllegalArgumentException("Invalid Card");
+            throw new IllegalArgumentException("Invalid freecell.model.Card");
           }
         } else {
-          throw new IllegalArgumentException("Invalid Card Index");
+          throw new IllegalArgumentException("Invalid freecell.model.Card Index");
         }
       } else {
         throw new IllegalArgumentException("Invalid Pile Number");
@@ -243,5 +250,45 @@ public class FreecellModel implements FreecellOperations<Card> {
   public boolean isGameOver() {
     boolean gO = this.gameOver;
     return gO;
+  }
+
+  /**
+   * Gets builder.
+   *
+   * @return the builder
+   */
+  public static FreecellOperationsBuilder getBuilder() {
+    return new FreecellOperationsBuilderImpl();
+  }
+
+  /**
+   * The type Freecell operations builder.
+   */
+  public static class FreecellOperationsBuilderImpl implements FreecellOperationsBuilder {
+
+    int cascadePiles;
+    int openPiles;
+
+    public FreecellOperationsBuilderImpl() {
+      this.cascadePiles = 8;
+      this.openPiles = 4;
+    }
+
+    @Override
+    public FreecellOperationsBuilder cascades(int c) {
+      this.cascadePiles = c;
+      return this;
+    }
+
+    @Override
+    public FreecellOperationsBuilder opens(int o) {
+      this.openPiles = o;
+      return this;
+    }
+
+    @Override
+    public FreecellOperations<Card> build() {
+      return new FreecellModel(this.cascadePiles, this.openPiles);
+    }
   }
 }
