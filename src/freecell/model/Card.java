@@ -1,7 +1,8 @@
 package freecell.model;
 
 /**
- * The type Card.
+ * The class Card which consists of private variable suit and number. It also includes methods to
+ * get the suit, get the number and a toString method which returns the string and the number.
  */
 public final class Card {
 
@@ -16,7 +17,7 @@ public final class Card {
    */
   public Card(Suit suit, int number) {
     if (number > 13) {
-      throw new IllegalArgumentException("freecell.model.Card number invalid");
+      throw new IllegalArgumentException("Card number invalid");
     }
     this.number = number;
     this.suit = suit;
@@ -40,6 +41,11 @@ public final class Card {
     return number;
   }
 
+  /**
+   * Overridden toString method.
+   *
+   * @return Returns the string which consists of the number and the suit.
+   */
   @Override
   public String toString() {
     if (suit == Suit.DIAMOND) {

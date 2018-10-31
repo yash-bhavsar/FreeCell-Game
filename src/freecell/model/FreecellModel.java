@@ -8,13 +8,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * The type Freecell model.
+ * The class FreecellModel which implements the FreeCellOperations interface and has methods like
+ * resetValues, checkAlternateSuit and shuffle which are used to reset values, check the alternate
+ * suit during moving the cards and shuffle the deck if the boolean shuffle is true. It also has
+ * private variables for cascade, foundation and open piles.
  */
 public class FreecellModel implements FreecellOperations<Card> {
 
-  private HashMap<Integer, LinkedList<Card>> cascade = new HashMap<>();
-  private HashMap<Integer, LinkedList<Card>> foundation = new HashMap<>();
-  private HashMap<Integer, Card> open = new HashMap<>();
+  private HashMap<Integer, LinkedList<Card>> cascade;
+  private HashMap<Integer, LinkedList<Card>> foundation;
+  private HashMap<Integer, Card> open;
 
   private int noOfCascadePiles;
   private int noOfOpenPiles;
@@ -28,12 +31,25 @@ public class FreecellModel implements FreecellOperations<Card> {
    * @param noOfOpenPiles    the no of open piles
    */
   public FreecellModel(int noOfCascadePiles, int noOfOpenPiles) {
+    cascade = new HashMap<>();
+    foundation = new HashMap<>();
+    open = new HashMap<>();
     this.noOfCascadePiles = noOfCascadePiles;
     this.noOfOpenPiles = noOfOpenPiles;
     resetValues();
     this.gameStarted = false;
   }
 
+  /**
+   * Return a valid and complete deck of cards for a game of Freecell. There is no restriction
+   * imposed on the ordering of these cards in the deck. An invalid deck is defined as a deck that
+   * has one or more of these flaws:
+   * <ul>
+   * <li>It does not have 52 cards</li> <li>It has duplicate cards</li> <li>It
+   * has at least one invalid card (invalid suit or invalid number) </li> </ul>
+   *
+   * @return the deck of cards as a list
+   */
   @Override
   public List<Card> getDeck() {
     List<Card> deck = new ArrayList<>();
@@ -53,6 +69,9 @@ public class FreecellModel implements FreecellOperations<Card> {
     return (deck);
   }
 
+  /**
+   * Private method used to reset all the values.
+   */
   private void resetValues() {
     for (int i = 0; i < noOfCascadePiles; i++) {
       this.cascade.put(i, new LinkedList<>());
@@ -66,6 +85,18 @@ public class FreecellModel implements FreecellOperations<Card> {
     this.gameState = "";
   }
 
+  /**
+   * Deal a new game of freecell with the given deck, with or without shuffling it first. This
+   * method first verifies that the deck is valid. It deals the deck among the cascade piles in
+   * roundrobin fashion. Thus if there are 4 cascade piles, the 1st pile will get cards 0, 4, 8,
+   * ..., the 2nd pile will get cards 1, 5, 9, ..., the 3rd pile will get cards 2, 6, 10, ... and
+   * the 4th pile will get cards 3, 7, 11, .... Depending on the number of cascade piles, they may
+   * have a different number of cards
+   *
+   * @param deck    the deck to be dealt
+   * @param shuffle if true, shuffle the deck else deal the deck as-is
+   * @throws IllegalArgumentException if the deck is invalid
+   */
   @Override
   public void startGame(List<Card> deck, boolean shuffle) throws IllegalArgumentException {
     List distinctDeck = deck.stream().map(Card::toString).distinct().collect(Collectors.toList());
@@ -104,7 +135,7 @@ public class FreecellModel implements FreecellOperations<Card> {
   /**
    * This methods checks whether the two card passed as argument are of different color or not.
    *
-   * @param destCard Card of destination pile to check the color.
+   * @param destCard   Card of destination pile to check the color.
    * @param sourceCard Card from source Pile.
    * @return true if the cards are of different color, false otherwise.
    */
@@ -118,8 +149,21 @@ public class FreecellModel implements FreecellOperations<Card> {
     }
   }
 
+
+  /**
+   * Move a card from the given source pile to the given destination pile, if the move is valid.
+   *
+   * @param sourceType       the type of the source pile see @link{freecell.model.PileType}
+   * @param sourcePileNumber the pile number of the given type, starting at 0
+   * @param cardIndex        the index of the card to be moved from the source pile, starting at 0
+   * @param destinationType  the type of the destination pile (see
+   * @param destPileNumber   the pile number of the given type, starting at 0
+   * @throws IllegalArgumentException if the move is not possible {@link PileType})
+   * @throws IllegalStateException    if a move is attempted before the game has starts
+   */
   @Override
-  public void move(PileType sourceType, int sourcePileNumber, int cardIndex, PileType destinationType, int destPileNumber) {
+  public void move(PileType sourceType, int sourcePileNumber, int cardIndex,
+                   PileType destinationType, int destPileNumber) {
     if (!this.gameStarted) {
       throw new IllegalStateException("Game not started yet so cannot make a move.");
     }
@@ -246,6 +290,29 @@ public class FreecellModel implements FreecellOperations<Card> {
     }
   }
 
+  /**
+   * Return the present state of the game as a string. The string is formatted as follows:
+   * <pre>
+   * F1:[b]f11,[b]f12,[b],...,[b]f1n1[n] (Cards in foundation pile 1 in order)
+   * F2:[b]f21,[b]f22,[b],...,[b]f2n2[n] (Cards in foundation pile 2 in order)
+   * ...
+   * Fm:[b]fm1,[b]fm2,[b],...,[b]fmnm[n] (Cards in foundation pile m in
+   * order)
+   * O1:[b]o11[n] (Cards in open pile 1)
+   * O2:[b]o21[n] (Cards in open pile 2)
+   * ...
+   * Ok:[b]ok1[n] (Cards in open pile k)
+   * C1:[b]c11,[b]c12,[b]...,[b]c1p1[n] (Cards in cascade pile 1 in order)
+   * C2:[b]c21,[b]c22,[b]...,[b]c2p2[n] (Cards in cascade pile 2 in order)
+   * ...
+   * Cs:[b]cs1,[b]cs2,[b]...,[b]csps (Cards in cascade pile s in order)
+   *
+   * where [b] is a single blankspace, [n] is newline. Note that there is no
+   * newline on the last line
+   * </pre>
+   *
+   * @return the formatted string as above
+   */
   @Override
   public String getGameState() {
     if (!this.gameStarted) {
@@ -256,7 +323,6 @@ public class FreecellModel implements FreecellOperations<Card> {
     String foundationPileString = "";
     String openPileString = "";
 
-    // Foundation Pile code.
     for (int i : foundation.keySet()) {
       if (foundation.get(i).size() > 0) {
         String tempFoundationString = "";
@@ -273,7 +339,6 @@ public class FreecellModel implements FreecellOperations<Card> {
       }
     }
 
-    // Open pile code.
     for (int i : open.keySet()) {
       int k = i + 1;
       if (open.get(i) != null) {
@@ -287,7 +352,6 @@ public class FreecellModel implements FreecellOperations<Card> {
       }
     }
 
-    // Cascade pile code.
     for (int i : cascade.keySet()) {
       if (cascade.get(i).size() > 0) {
         String tempString = "";
@@ -306,6 +370,11 @@ public class FreecellModel implements FreecellOperations<Card> {
     return this.gameState + foundationPileString + openPileString + cascadePileString.trim();
   }
 
+  /**
+   * Signal if the game is over or not.
+   *
+   * @return true if game is over, false otherwise
+   */
   @Override
   public boolean isGameOver() {
     for (int i = 0; i < 4; i++) {
@@ -317,9 +386,9 @@ public class FreecellModel implements FreecellOperations<Card> {
   }
 
   /**
-   * Gets builder.
+   * Returns a new builder of Free cell game.
    *
-   * @return the builder
+   * @return new FreecellOperationsBuilderImpl object.
    */
   public static FreecellOperationsBuilder getBuilder() {
     return new FreecellOperationsBuilderImpl();
@@ -330,17 +399,29 @@ public class FreecellModel implements FreecellOperations<Card> {
    */
   public static class FreecellOperationsBuilderImpl implements FreecellOperationsBuilder {
 
+    /**
+     * The Cascade piles.
+     */
     int cascadePiles;
+    /**
+     * The Open piles.
+     */
     int openPiles;
 
     /**
-     *
+     * Instantiates a new Freecell operations builder.
      */
     public FreecellOperationsBuilderImpl() {
       this.cascadePiles = 8;
       this.openPiles = 4;
     }
 
+    /**
+     * Cascades freecell operations builder.
+     *
+     * @param c the number of cascade piles in the game.
+     * @return the freecell operations builder
+     */
     @Override
     public FreecellOperationsBuilder cascades(int c) {
       if (c < 4) {
@@ -350,6 +431,12 @@ public class FreecellModel implements FreecellOperations<Card> {
       return this;
     }
 
+    /**
+     * Opens freecell operations builder.
+     *
+     * @param o the number of open piles in the game.
+     * @return the freecell operations builder
+     */
     @Override
     public FreecellOperationsBuilder opens(int o) {
       if (o < 1) {
@@ -359,6 +446,11 @@ public class FreecellModel implements FreecellOperations<Card> {
       return this;
     }
 
+    /**
+     * Return a new free cell model with specified cascade and open piles.
+     *
+     * @return the freecell Model object.
+     */
     @Override
     public FreecellOperations<Card> build() {
       return new FreecellModel(this.cascadePiles, this.openPiles);
