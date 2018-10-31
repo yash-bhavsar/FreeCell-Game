@@ -136,8 +136,7 @@ public class FreecellModel implements FreecellOperations<Card> {
   }
 
   /**
-   *
-   * used to check the suit.
+   * Used to check the suit.
    * @param destCard is the card from destination pile.
    * @param sourceCard is the card from source pile.
    * @return Returns true if the suits are alternate.
@@ -457,7 +456,6 @@ public class FreecellModel implements FreecellOperations<Card> {
     /**
      * Build freecell operations.
      *
-     * @param <Card> the type parameter
      * @return the freecell operations
      */
     @Override
