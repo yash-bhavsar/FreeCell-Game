@@ -1,10 +1,20 @@
 package freecell.model;
 
+/**
+ * The class Card which consists of private variable suit and number. It also includes methods
+ * to get the suit, get the number and a toString method which returns the string and the number.
+ */
 public final class Card {
 
   private final Suit suit;
   private final int number;
 
+  /**
+   * Instantiates a new Card.
+   *
+   * @param suit   the suit
+   * @param number the number
+   */
   public Card(Suit suit, int number) {
     if (number > 13) {
       throw new IllegalArgumentException("freecell.model.Card number invalid");
@@ -13,14 +23,28 @@ public final class Card {
     this.suit = suit;
   }
 
+  /**
+   * Gets suit.
+   *
+   * @return the suit
+   */
   public Suit getSuit() {
     return suit;
   }
 
+  /**
+   * Gets number.
+   *
+   * @return the number
+   */
   public int getNumber() {
     return number;
   }
 
+  /**
+   * Overridden toString method.
+   * @return Returns the string which consists of the number and the suit.
+   */
   @Override
   public String toString() {
     if (suit == Suit.DIAMOND) {
