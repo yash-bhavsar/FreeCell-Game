@@ -168,8 +168,8 @@ public class FreecellModel implements FreecellOperations<Card> {
       throw new IllegalStateException("Game not started yet so cannot make a move.");
     }
     if (sourceType == PileType.CASCADE && destinationType == PileType.CASCADE) {
-      if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0 &&
-              destPileNumber < noOfCascadePiles) {
+      if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
+              && destPileNumber < noOfCascadePiles) {
         if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
           Card c = this.cascade.get(sourcePileNumber).getLast();
           Card dPLCard = this.cascade.get(destPileNumber).getLast();
@@ -186,8 +186,8 @@ public class FreecellModel implements FreecellOperations<Card> {
         throw new IllegalArgumentException("Invalid pile number");
       }
     } else if (sourceType == PileType.CASCADE && destinationType == PileType.OPEN) {
-      if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0 &&
-              destPileNumber < noOfOpenPiles) {
+      if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
+              && destPileNumber < noOfOpenPiles) {
         if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
           Card c = this.cascade.get(sourcePileNumber).getLast();
           if (this.open.get(destPileNumber) == null) {
@@ -203,8 +203,8 @@ public class FreecellModel implements FreecellOperations<Card> {
         throw new IllegalArgumentException("Invalid pile number");
       }
     } else if (sourceType == PileType.CASCADE && destinationType == PileType.FOUNDATION) {
-      if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0 &&
-              destPileNumber < 4) {
+      if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
+              && destPileNumber < 4) {
         if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
           Card c = this.cascade.get(sourcePileNumber).getLast();
           if (this.foundation.get(destPileNumber).isEmpty()) {
@@ -230,8 +230,8 @@ public class FreecellModel implements FreecellOperations<Card> {
         throw new IllegalArgumentException("Invalid Pile Number");
       }
     } else if (sourceType == PileType.OPEN && destinationType == PileType.CASCADE) {
-      if (sourcePileNumber >= 0 && sourcePileNumber < noOfOpenPiles && destPileNumber >= 0 &&
-              destPileNumber < noOfCascadePiles) {
+      if (sourcePileNumber >= 0 && sourcePileNumber < noOfOpenPiles && destPileNumber >= 0
+              && destPileNumber < noOfCascadePiles) {
         Card c;
         if (this.open.get(sourcePileNumber) != null) {
           c = this.open.get(sourcePileNumber);
@@ -249,8 +249,8 @@ public class FreecellModel implements FreecellOperations<Card> {
         throw new IllegalArgumentException("Invalid pile number");
       }
     } else if (sourceType == PileType.OPEN && destinationType == PileType.FOUNDATION) {
-      if (sourcePileNumber >= 0 && sourcePileNumber < 4 && destPileNumber >= 0 &&
-              destPileNumber < noOfCascadePiles) {
+      if (sourcePileNumber >= 0 && sourcePileNumber < 4 && destPileNumber >= 0
+              && destPileNumber < noOfCascadePiles) {
         Card c;
         if (this.open.get(sourcePileNumber) != null) {
           c = this.open.get(sourcePileNumber);
@@ -278,8 +278,8 @@ public class FreecellModel implements FreecellOperations<Card> {
         throw new IllegalArgumentException("Invalid pile number");
       }
     } else if (sourceType == PileType.OPEN && destinationType == PileType.OPEN) {
-      if (sourcePileNumber >= 0 && sourcePileNumber < noOfOpenPiles && destPileNumber >= 0 &&
-              destPileNumber < noOfOpenPiles) {
+      if (sourcePileNumber >= 0 && sourcePileNumber < noOfOpenPiles && destPileNumber >= 0
+              && destPileNumber < noOfOpenPiles) {
         if (this.open.get(sourcePileNumber) != null && this.open.get(destPileNumber) == null) {
           this.open.put(destPileNumber, this.open.get(sourcePileNumber));
           this.open.put(sourcePileNumber, null);
