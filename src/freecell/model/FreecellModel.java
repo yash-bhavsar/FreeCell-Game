@@ -286,9 +286,18 @@ public class FreecellModel implements FreecellOperations<Card> {
    */
   public static class FreecellOperationsBuilderImpl implements FreecellOperationsBuilder {
 
+    /**
+     * The Cascade piles.
+     */
     int cascadePiles;
+    /**
+     * The Open piles.
+     */
     int openPiles;
 
+    /**
+     * Instantiates a new Freecell operations builder.
+     */
     public FreecellOperationsBuilderImpl() {
       this.cascadePiles = 8;
       this.openPiles = 4;
