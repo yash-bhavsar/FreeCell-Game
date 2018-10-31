@@ -1,10 +1,19 @@
 package freecell.model;
 
+/**
+ * The type Card.
+ */
 public final class Card {
 
   private final Suit suit;
   private final int number;
 
+  /**
+   * Instantiates a new Card.
+   *
+   * @param suit   the suit
+   * @param number the number
+   */
   public Card(Suit suit, int number) {
     if (number > 13) {
       throw new IllegalArgumentException("freecell.model.Card number invalid");
@@ -13,10 +22,20 @@ public final class Card {
     this.suit = suit;
   }
 
+  /**
+   * Gets suit.
+   *
+   * @return the suit
+   */
   public Suit getSuit() {
     return suit;
   }
 
+  /**
+   * Gets number.
+   *
+   * @return the number
+   */
   public int getNumber() {
     return number;
   }

@@ -19,7 +19,6 @@ public class FreecellModel implements FreecellOperations<Card> {
   private int noOfCascadePiles;
   private int noOfOpenPiles;
   private String gameState;
-  private boolean gameOver;
   private boolean gameStarted;
 
   /**
@@ -65,7 +64,6 @@ public class FreecellModel implements FreecellOperations<Card> {
       this.open.put(i, null);
     }
     this.gameState = "";
-    this.gameOver = false;
   }
 
   @Override
@@ -104,11 +102,11 @@ public class FreecellModel implements FreecellOperations<Card> {
   }
 
   /**
+   * This methods checks whether the two card passed as argument are of different color or not.
    *
-   *
-   * @param destCard
-   * @param sourceCard
-   * @return
+   * @param destCard Card of destination pile to check the color.
+   * @param sourceCard Card from source Pile.
+   * @return true if the cards are of different color, false otherwise.
    */
   private boolean checkAlternateSuit(Card destCard, Card sourceCard) {
     if (destCard.getSuit() == Suit.SPADE || destCard.getSuit() == Suit.CLUB) {
@@ -335,6 +333,9 @@ public class FreecellModel implements FreecellOperations<Card> {
     int cascadePiles;
     int openPiles;
 
+    /**
+     *
+     */
     public FreecellOperationsBuilderImpl() {
       this.cascadePiles = 8;
       this.openPiles = 4;
