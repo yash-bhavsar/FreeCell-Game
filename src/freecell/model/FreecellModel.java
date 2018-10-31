@@ -30,7 +30,7 @@ public class FreecellModel implements FreecellOperations<Card> {
    * @param noOfCascadePiles the no of cascade piles
    * @param noOfOpenPiles    the no of open piles
    */
-  public FreecellModel(int noOfCascadePiles, int noOfOpenPiles) {
+  private FreecellModel(int noOfCascadePiles, int noOfOpenPiles) {
     cascade = new HashMap<>();
     foundation = new HashMap<>();
     open = new HashMap<>();
@@ -70,7 +70,7 @@ public class FreecellModel implements FreecellOperations<Card> {
   }
 
   /**
-   * Private method used to reset all the values.
+   * Private method used to reset all the values of the game.
    */
   private void resetValues() {
     for (int i = 0; i < noOfCascadePiles; i++) {
@@ -103,10 +103,10 @@ public class FreecellModel implements FreecellOperations<Card> {
     if (deck.size() != distinctDeck.size() || distinctDeck.size() != 52) {
       throw new IllegalArgumentException("Deck is invalid");
     }
+
     deck = shuffle ? shuffle(deck) : deck;
 
     resetValues();
-
     LinkedList<Card> c;
     for (int i = 0; i < deck.size(); i++) {
       for (int j = 0; j < this.noOfCascadePiles; j++) {
@@ -167,101 +167,94 @@ public class FreecellModel implements FreecellOperations<Card> {
     if (!this.gameStarted) {
       throw new IllegalStateException("Game not started yet so cannot make a move.");
     }
+
     if (sourceType == PileType.CASCADE && destinationType == PileType.CASCADE) {
-      if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
-              && destPileNumber < noOfCascadePiles) {
-        if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
-          Card c = this.cascade.get(sourcePileNumber).getLast();
-          Card dPLCard = this.cascade.get(destPileNumber).getLast();
-          if (((dPLCard.getNumber() - 1) == c.getNumber()) && checkAlternateSuit(dPLCard, c)) {
-            this.cascade.get(destPileNumber).add(c);
-            this.cascade.get(sourcePileNumber).removeLast();
-          } else {
-            throw new IllegalArgumentException("Invalid Card");
-          }
-        } else {
-          throw new IllegalArgumentException("Invalid card index");
-        }
-      } else {
-        throw new IllegalArgumentException("Invalid pile number");
-      }
+      moveCascadeToCascade(sourcePileNumber, cardIndex, destPileNumber);
     } else if (sourceType == PileType.CASCADE && destinationType == PileType.OPEN) {
-      if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
-              && destPileNumber < noOfOpenPiles) {
-        if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
-          Card c = this.cascade.get(sourcePileNumber).getLast();
-          if (this.open.get(destPileNumber) == null) {
-            this.open.put(destPileNumber, c);
-            this.cascade.get(sourcePileNumber).removeLast();
-          } else {
-            throw new IllegalArgumentException("Open pile already filled");
-          }
-        } else {
-          throw new IllegalArgumentException("Invalid card index");
-        }
-      } else {
-        throw new IllegalArgumentException("Invalid pile number");
-      }
+      moveCascadeToOpen(sourcePileNumber, cardIndex, destPileNumber);
     } else if (sourceType == PileType.CASCADE && destinationType == PileType.FOUNDATION) {
-      if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
-              && destPileNumber < 4) {
-        if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
-          Card c = this.cascade.get(sourcePileNumber).getLast();
-          if (this.foundation.get(destPileNumber).isEmpty()) {
-            if (c.getNumber() == 1) {
-              this.foundation.get(destPileNumber).add(c);
-              this.cascade.get(sourcePileNumber).removeLast();
-            } else {
-              throw new IllegalArgumentException("Card cannot be moved");
-            }
-          } else {
-            Card dPLCard = this.foundation.get(destPileNumber).getLast();
-            if (((dPLCard.getNumber() + 1) == c.getNumber()) && dPLCard.getSuit() == c.getSuit()) {
-              this.foundation.get(destPileNumber).add(c);
-              this.cascade.get(sourcePileNumber).removeLast();
-            } else {
-              throw new IllegalArgumentException("Invalid Card");
-            }
-          }
-        } else {
-          throw new IllegalArgumentException("Invalid Card Index");
-        }
-      } else {
-        throw new IllegalArgumentException("Invalid Pile Number");
-      }
+      moveCascadeToFoundation(sourcePileNumber, cardIndex, destPileNumber);
     } else if (sourceType == PileType.OPEN && destinationType == PileType.CASCADE) {
-      if (sourcePileNumber >= 0 && sourcePileNumber < noOfOpenPiles && destPileNumber >= 0
-              && destPileNumber < noOfCascadePiles) {
-        Card c;
-        if (this.open.get(sourcePileNumber) != null) {
-          c = this.open.get(sourcePileNumber);
-        } else {
-          throw new IllegalArgumentException("No Card in open pile");
-        }
+      moveOpenToCascade(sourcePileNumber, cardIndex, destPileNumber);
+    } else if (sourceType == PileType.OPEN && destinationType == PileType.FOUNDATION) {
+      moveOpenToFoundation(sourcePileNumber, cardIndex, destPileNumber);
+    } else if (sourceType == PileType.OPEN && destinationType == PileType.OPEN) {
+      moveOpenToOpen(sourcePileNumber, cardIndex, destPileNumber);
+    }
+  }
+
+  /**
+   * Move a card from Cascade pile to other Cascade pile, if the move is valid.
+   *
+   * @param sourcePileNumber the pile number of the given type, starting at 0
+   * @param cardIndex        the index of the card to be moved from the source pile, starting at 0
+   * @param destPileNumber   the pile number of the given type, starting at 0
+   * @throws IllegalArgumentException if the move is not possible {@link PileType})
+   */
+  private void moveCascadeToCascade(int sourcePileNumber, int cardIndex, int destPileNumber) {
+    if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
+            && destPileNumber < noOfCascadePiles) {
+      if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
+        Card c = this.cascade.get(sourcePileNumber).getLast();
         Card dPLCard = this.cascade.get(destPileNumber).getLast();
         if (((dPLCard.getNumber() - 1) == c.getNumber()) && checkAlternateSuit(dPLCard, c)) {
           this.cascade.get(destPileNumber).add(c);
-          this.open.put(sourcePileNumber, null);
+          this.cascade.get(sourcePileNumber).removeLast();
         } else {
-          throw new IllegalArgumentException("Invalid card");
+          throw new IllegalArgumentException("Invalid Card");
         }
       } else {
-        throw new IllegalArgumentException("Invalid pile number");
+        throw new IllegalArgumentException("Invalid card index");
       }
-    } else if (sourceType == PileType.OPEN && destinationType == PileType.FOUNDATION) {
-      if (sourcePileNumber >= 0 && sourcePileNumber < 4 && destPileNumber >= 0
-              && destPileNumber < noOfCascadePiles) {
-        Card c;
-        if (this.open.get(sourcePileNumber) != null) {
-          c = this.open.get(sourcePileNumber);
-        } else {
-          throw new IllegalArgumentException("No card in open pile");
-        }
+    } else {
+      throw new IllegalArgumentException("Invalid pile number");
+    }
+  }
 
+  /**
+   * Move a card from Cascade pile to Open pile, if the move is valid.
+   *
+   * @param sourcePileNumber the pile number of the given type, starting at 0
+   * @param cardIndex        the index of the card to be moved from the source pile, starting at 0
+   * @param destPileNumber   the pile number of the given type, starting at 0
+   * @throws IllegalArgumentException if the move is not possible {@link PileType})
+   */
+  private void moveCascadeToOpen(int sourcePileNumber, int cardIndex, int destPileNumber) {
+    if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
+            && destPileNumber < noOfOpenPiles) {
+      if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
+        Card c = this.cascade.get(sourcePileNumber).getLast();
+        if (this.open.get(destPileNumber) == null) {
+          this.open.put(destPileNumber, c);
+          this.cascade.get(sourcePileNumber).removeLast();
+        } else {
+          throw new IllegalArgumentException("Open pile already filled");
+        }
+      } else {
+        throw new IllegalArgumentException("Invalid card index");
+      }
+    } else {
+      throw new IllegalArgumentException("Invalid pile number");
+    }
+  }
+
+  /**
+   * Move a card from Cascade pile to Foundation pile, if the move is valid.
+   *
+   * @param sourcePileNumber the pile number of the given type, starting at 0
+   * @param cardIndex        the index of the card to be moved from the source pile, starting at 0
+   * @param destPileNumber   the pile number of the given type, starting at 0
+   * @throws IllegalArgumentException if the move is not possible {@link PileType})
+   */
+  private void moveCascadeToFoundation(int sourcePileNumber, int cardIndex, int destPileNumber) {
+    if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
+            && destPileNumber < 4) {
+      if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
+        Card c = this.cascade.get(sourcePileNumber).getLast();
         if (this.foundation.get(destPileNumber).isEmpty()) {
           if (c.getNumber() == 1) {
             this.foundation.get(destPileNumber).add(c);
-            this.open.put(sourcePileNumber, null);
+            this.cascade.get(sourcePileNumber).removeLast();
           } else {
             throw new IllegalArgumentException("Card cannot be moved");
           }
@@ -269,25 +262,177 @@ public class FreecellModel implements FreecellOperations<Card> {
           Card dPLCard = this.foundation.get(destPileNumber).getLast();
           if (((dPLCard.getNumber() + 1) == c.getNumber()) && dPLCard.getSuit() == c.getSuit()) {
             this.foundation.get(destPileNumber).add(c);
-            this.open.put(sourcePileNumber, null);
+            this.cascade.get(sourcePileNumber).removeLast();
           } else {
-            throw new IllegalArgumentException("Invalid card");
+            throw new IllegalArgumentException("Invalid Card");
           }
         }
       } else {
-        throw new IllegalArgumentException("Invalid pile number");
+        throw new IllegalArgumentException("Invalid Card Index");
       }
-    } else if (sourceType == PileType.OPEN && destinationType == PileType.OPEN) {
-      if (sourcePileNumber >= 0 && sourcePileNumber < noOfOpenPiles && destPileNumber >= 0
-              && destPileNumber < noOfOpenPiles) {
-        if (this.open.get(sourcePileNumber) != null && this.open.get(destPileNumber) == null) {
-          this.open.put(destPileNumber, this.open.get(sourcePileNumber));
+    } else {
+      throw new IllegalArgumentException("Invalid Pile Number");
+    }
+  }
+
+  /**
+   * Move a card from Open pile to Cascade pile, if the move is valid.
+   *
+   * @param sourcePileNumber the pile number of the given type, starting at 0
+   * @param cardIndex        the index of the card to be moved from the source pile, starting at 0
+   * @param destPileNumber   the pile number of the given type, starting at 0
+   * @throws IllegalArgumentException if the move is not possible {@link PileType})
+   */
+  private void moveOpenToCascade(int sourcePileNumber, int cardIndex, int destPileNumber) {
+    if (sourcePileNumber >= 0 && sourcePileNumber < noOfOpenPiles && destPileNumber >= 0
+            && destPileNumber < noOfCascadePiles) {
+      Card c;
+      if (this.open.get(sourcePileNumber) != null) {
+        c = this.open.get(sourcePileNumber);
+      } else {
+        throw new IllegalArgumentException("No Card in open pile");
+      }
+      Card dPLCard = this.cascade.get(destPileNumber).getLast();
+      if (((dPLCard.getNumber() - 1) == c.getNumber()) && checkAlternateSuit(dPLCard, c)) {
+        this.cascade.get(destPileNumber).add(c);
+        this.open.put(sourcePileNumber, null);
+      } else {
+        throw new IllegalArgumentException("Invalid card");
+      }
+    } else {
+      throw new IllegalArgumentException("Invalid pile number");
+    }
+  }
+
+  /**
+   * Move a card from Open pile to Foundation pile, if the move is valid.
+   *
+   * @param sourcePileNumber the pile number of the given type, starting at 0
+   * @param cardIndex        the index of the card to be moved from the source pile, starting at 0
+   * @param destPileNumber   the pile number of the given type, starting at 0
+   * @throws IllegalArgumentException if the move is not possible {@link PileType})
+   */
+  private void moveOpenToFoundation(int sourcePileNumber, int cardIndex, int destPileNumber) {
+    if (sourcePileNumber >= 0 && sourcePileNumber < 4 && destPileNumber >= 0
+            && destPileNumber < noOfCascadePiles) {
+      Card c;
+      if (this.open.get(sourcePileNumber) != null) {
+        c = this.open.get(sourcePileNumber);
+      } else {
+        throw new IllegalArgumentException("No card in open pile");
+      }
+
+      if (this.foundation.get(destPileNumber).isEmpty()) {
+        if (c.getNumber() == 1) {
+          this.foundation.get(destPileNumber).add(c);
           this.open.put(sourcePileNumber, null);
         } else {
-          throw new IllegalArgumentException("No card in open pile");
+          throw new IllegalArgumentException("Card cannot be moved");
+        }
+      } else {
+        Card dPLCard = this.foundation.get(destPileNumber).getLast();
+        if (((dPLCard.getNumber() + 1) == c.getNumber()) && dPLCard.getSuit() == c.getSuit()) {
+          this.foundation.get(destPileNumber).add(c);
+          this.open.put(sourcePileNumber, null);
+        } else {
+          throw new IllegalArgumentException("Invalid card");
         }
       }
+    } else {
+      throw new IllegalArgumentException("Invalid pile number");
     }
+  }
+
+  /**
+   * Move a card from Open pile to other Open pile, if the move is valid.
+   *
+   * @param sourcePileNumber the pile number of the given type, starting at 0
+   * @param cardIndex        the index of the card to be moved from the source pile, starting at 0
+   * @param destPileNumber   the pile number of the given type, starting at 0
+   * @throws IllegalArgumentException if the move is not possible {@link PileType})
+   */
+  private void moveOpenToOpen(int sourcePileNumber, int cardIndex, int destPileNumber) {
+    if (sourcePileNumber >= 0 && sourcePileNumber < noOfOpenPiles && destPileNumber >= 0
+            && destPileNumber < noOfOpenPiles) {
+      if (this.open.get(sourcePileNumber) != null && this.open.get(destPileNumber) == null) {
+        this.open.put(destPileNumber, this.open.get(sourcePileNumber));
+        this.open.put(sourcePileNumber, null);
+      } else {
+        throw new IllegalArgumentException("No card in open pile");
+      }
+    }
+  }
+
+  /**
+   * Return the foundation in the form of string.
+   *
+   * @return foundation pile in the form of string.
+   */
+  private String stringFoundation() {
+    String foundationPileString = "";
+    for (int i : foundation.keySet()) {
+      if (foundation.get(i).size() > 0) {
+        String tempFoundationString = "";
+        int k = i + 1;
+        for (int j = 0; j < foundation.get(i).size(); j++) {
+          Card c = foundation.get(i).get(j);
+          tempFoundationString += c.toString() + ", ";
+        }
+        tempFoundationString = tempFoundationString.replaceAll(", $", "").trim();
+        foundationPileString += "F" + k + ":" + " " + tempFoundationString + "\n";
+      } else {
+        int k = i + 1;
+        foundationPileString += "F" + k + ":" + "\n";
+      }
+    }
+    return foundationPileString;
+  }
+
+  /**
+   * Return the open card in the form of the String.
+   *
+   * @return Open cards in the form of a String.
+   */
+  private String stringOpen() {
+    String openPileString = "";
+    for (int i : open.keySet()) {
+      int k = i + 1;
+      if (open.get(i) != null) {
+        String tempOpenString = "";
+        Card c = open.get(i);
+        tempOpenString += c.toString() + ", ";
+        tempOpenString = tempOpenString.replaceAll(", $", "").trim();
+        openPileString += "O" + k + ":" + " " + tempOpenString + "\n";
+      } else {
+        openPileString += "O" + k + ":" + "\n";
+      }
+    }
+    return openPileString;
+  }
+
+  /**
+   * Return the Cascade Pile in the form of String.
+   *
+   * @return Cascade Piles in the form of String.
+   */
+  private String stringCascade() {
+    String cascadePileString = "";
+    for (int i : cascade.keySet()) {
+      if (cascade.get(i).size() > 0) {
+        String tempString = "";
+        int k = i + 1;
+        for (int j = 0; j < cascade.get(i).size(); j++) {
+          Card c = cascade.get(i).get(j);
+          tempString += c.toString() + ", ";
+        }
+        tempString = tempString.replaceAll(", $", "").trim();
+        cascadePileString += "C" + k + ":" + " " + tempString + "\n";
+      } else {
+        int k = i + 1;
+        cascadePileString += "C" + k + ":" + "\n";
+      }
+    }
+    return cascadePileString;
   }
 
   /**
@@ -318,55 +463,9 @@ public class FreecellModel implements FreecellOperations<Card> {
     if (!this.gameStarted) {
       return "";
     }
-
-    String cascadePileString = "";
-    String foundationPileString = "";
-    String openPileString = "";
-
-    for (int i : foundation.keySet()) {
-      if (foundation.get(i).size() > 0) {
-        String tempFoundationString = "";
-        int k = i + 1;
-        for (int j = 0; j < foundation.get(i).size(); j++) {
-          Card c = foundation.get(i).get(j);
-          tempFoundationString += c.toString() + ", ";
-        }
-        tempFoundationString = tempFoundationString.replaceAll(", $", "").trim();
-        foundationPileString += "F" + k + ":" + " " + tempFoundationString + "\n";
-      } else {
-        int k = i + 1;
-        foundationPileString += "F" + k + ":" + "\n";
-      }
-    }
-
-    for (int i : open.keySet()) {
-      int k = i + 1;
-      if (open.get(i) != null) {
-        String tempOpenString = "";
-        Card c = open.get(i);
-        tempOpenString += c.toString() + ", ";
-        tempOpenString = tempOpenString.replaceAll(", $", "").trim();
-        openPileString += "O" + k + ":" + " " + tempOpenString + "\n";
-      } else {
-        openPileString += "O" + k + ":" + "\n";
-      }
-    }
-
-    for (int i : cascade.keySet()) {
-      if (cascade.get(i).size() > 0) {
-        String tempString = "";
-        int k = i + 1;
-        for (int j = 0; j < cascade.get(i).size(); j++) {
-          Card c = cascade.get(i).get(j);
-          tempString += c.toString() + ", ";
-        }
-        tempString = tempString.replaceAll(", $", "").trim();
-        cascadePileString += "C" + k + ":" + " " + tempString + "\n";
-      } else {
-        int k = i + 1;
-        cascadePileString += "C" + k + ":" + "\n";
-      }
-    }
+    String cascadePileString = stringCascade();
+    String foundationPileString = stringFoundation();
+    String openPileString = stringOpen();
     return this.gameState + foundationPileString + openPileString + cascadePileString.trim();
   }
 

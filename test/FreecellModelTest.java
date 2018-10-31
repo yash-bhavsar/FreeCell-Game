@@ -7,10 +7,13 @@ import freecell.model.Card;
 import freecell.model.FreecellModel;
 import freecell.model.FreecellOperations;
 import freecell.model.PileType;
+import freecell.model.Suit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * The Freecell game model test.
@@ -393,11 +396,20 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test negative cascade piles and open piles.
+   * Test negative cascade piles.
    */
   @Test(expected = IllegalArgumentException.class)
-  public void testNegativeCascadePilesAndOpenPiles() {
+  public void testNegativeCascadePiles() {
     FreecellOperations freecellOperations = FreecellModel.getBuilder().cascades(-1)
+            .opens(-1).build();
+  }
+
+  /**
+   * Test negative open piles.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegativeOpenPiles() {
+    FreecellOperations freecellOperations = FreecellModel.getBuilder()
             .opens(-1).build();
   }
 
@@ -556,5 +568,46 @@ public class FreecellModelTest {
     fcoOpen4Cascade6.startGame(defaultDeck, false);
     fcoOpen4Cascade62.startGame(defaultDeck, true);
     assertNotEquals(fcoOpen4Cascade6.getGameState(), fcoOpen4Cascade62.getGameState());
+  }
+
+  /**
+   * Test invalid deck.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidDeck() {
+    List<Card> defaultDeck = fcoOpen4Cascade6.getDeck();
+    defaultDeck.add(new Card(Suit.DIAMOND, 1));
+    fcoDefault.startGame(defaultDeck, false);
+  }
+
+  /**
+   * Test game over pass.
+   */
+  @Test
+  public void testGameOverPass() {
+    FreecellOperations freecellOperations = FreecellModel.getBuilder().cascades(52)
+            .opens(4).build();
+    List<Card> defaultDeck = freecellOperations.getDeck();
+    freecellOperations.startGame(defaultDeck, false);
+    for (int i = 0; i < 52 ; i++) {
+      if (i <= 12) {
+        freecellOperations.move(PileType.CASCADE, i, 0, PileType.FOUNDATION, 0);
+      } else if (i <= 25) {
+        freecellOperations.move(PileType.CASCADE, i, 0, PileType.FOUNDATION, 1);
+      } else if (i <= 38) {
+        freecellOperations.move(PileType.CASCADE, i, 0, PileType.FOUNDATION, 2);
+      } else {
+        freecellOperations.move(PileType.CASCADE, i, 0, PileType.FOUNDATION, 3);
+      }
+    }
+    assertTrue(freecellOperations.isGameOver());
+  }
+
+  /**
+   * Test game state string before start game.
+   */
+  @Test
+  public void testGameStateStringbeforeStartGame() {
+    assertEquals(fcoDefault.getGameState(), "");
   }
 }
