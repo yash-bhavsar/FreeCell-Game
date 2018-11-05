@@ -211,7 +211,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test move invalid cascade to cascade.
+   * Test move invalid cascade to cascade. Throws IllegalArgumentException because cascade to
+   * cascade move is invalid.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testMoveInvalidCascadetoCascade() {
@@ -222,7 +223,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test move invalid card index cascade.
+   * Test move invalid card index cascade. Throws IllegalArgumentException because the card index
+   * cannot be more or less than the number of cards.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testMoveInvalidCardIndexCascade() {
@@ -233,7 +235,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test move invalid cascade pile number.
+   * Test move invalid cascade pile number. Throws IllegalArgumentException because of invalid
+   * cascade pile number.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testMoveInvalidCascadePileNumber() {
@@ -244,7 +247,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test move cascade same pile.
+   * Test move cascade same pile. Throws IllegalArgumentException because you cannot move cards in
+   * the same pile.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testMoveCascadeSamePile() {
@@ -255,7 +259,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test moveto invalid open.
+   * Test moveto invalid open. Throws IllegalArgumentException if the open is not empty and
+   * you are trying to move a card to open.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testMovetoInvalidOpen() {
@@ -283,7 +288,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test move invalid open to cascade.
+   * Test move invalid open to cascade. Throws IllegalArgumentException if the open to
+   * cascade move is invalid.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testMoveInvalidOpenToCascade() {
@@ -351,7 +357,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test move invalid card to foundation.
+   * Test move invalid card to foundation. Throws IllegalArgumentException if the card cannot
+   * be moved to foundation pile.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testMoveInvalidCardToFoundation() {
@@ -395,7 +402,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test negative cascade piles.
+   * Test negative cascade piles. Throws IllegalArgumentException because cascade piles cannot
+   * be negative.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegativeCascadePiles() {
@@ -404,7 +412,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test negative open piles.
+   * Test negative open piles. Throws IllegalArgumentException because open piles cannot be
+   * negative.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testNegativeOpenPiles() {
@@ -413,7 +422,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test cascade piles and open piles less than minimum limit.
+   * Test cascade piles and open piles less than minimum limit. Throws IllegalArgumentException
+   * because cascade pile cannot be less than 4 and open pile cannot be less than 1.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testCascadePilesandOpenPilesLessThanMinimumLimit() {
@@ -421,7 +431,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test move before start game.
+   * Test move before start game. Throws IllegalArgumentException because move cannot be called
+   * before game has started.
    */
   @Test(expected = IllegalStateException.class)
   public void testMoveBeforeStartGame() {
@@ -429,7 +440,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test moveto open pile not existing.
+   * Test moveto open pile not existing. Throws IllegalArgumentException when the open pile does
+   * not exist.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testMovetoOpenPileNotExisting() {
@@ -439,7 +451,19 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test moveto foundation pile not existing.
+   * Test moveto cascade pile not existing. Throws IllegalArgumentException when the cascade
+   * pile does not exist.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testMovetoCascadePileNotExisting() {
+    List<Card> defaultDeck = fcoOpen4Cascade6.getDeck();
+    fcoOpen4Cascade6.startGame(defaultDeck, false);
+    fcoOpen4Cascade6.move(PileType.CASCADE, 0, 8, PileType.CASCADE, 8);
+  }
+
+  /**
+   * Test moveto foundation pile not existing. Throws IllegalArgumentException when the
+   * foundation pile does not exist.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testMovetoFoundationPileNotExisting() {
@@ -534,7 +558,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test invalid move open to foundation.
+   * Test invalid move open to foundation. Throws IllegalArgumentException if open to foundation
+   * move is invalid.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testInvalidMoveOpentoFoundation() {
@@ -545,7 +570,8 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test invalid move 2 nd card open pile to foundation pile.
+   * Test invalid move 2 nd card open pile to foundation pile. Throws IllegalArgumentException
+   * because 2nd card cannot be moved.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testInvalidMove2ndCardOpentoFoundation() {
@@ -570,7 +596,7 @@ public class FreecellModelTest {
   }
 
   /**
-   * Test invalid deck.
+   * Test invalid deck. Throws IllegalArgumentException if the deck is invalid.
    */
   @Test(expected = IllegalArgumentException.class)
   public void testInvalidDeck() {
@@ -608,5 +634,13 @@ public class FreecellModelTest {
   @Test
   public void testGameStateStringbeforeStartGame() {
     assertEquals(fcoDefault.getGameState(), "");
+  }
+
+  /**
+   * Test if card is invalid or not. Throws IllegalArgumentException because the card is invalid.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void testInvalidCard() {
+    Card c = new Card(Suit.CLUB, 14);
   }
 }
