@@ -1,6 +1,7 @@
 package freecell.controller;
 
 import java.io.IOException;
+import java.nio.channels.IllegalSelectorException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -44,6 +45,9 @@ public class FreecellController implements IFreecellController {
       throw new IllegalArgumentException("deck");
     }
 
+    if (model == null) {
+      throw new IllegalArgumentException("model not initialized");
+    }
 
     int number;
 
@@ -57,7 +61,7 @@ public class FreecellController implements IFreecellController {
           try {
             this.ap = this.ap.append("Game quit prematurely.");
           } catch (IOException e) {
-            continue;
+            throw new IllegalStateException("Not valid state");
           }
         }
         number = getPileNumber(1, newString);
@@ -88,13 +92,13 @@ public class FreecellController implements IFreecellController {
           try {
             this.ap = this.ap.append("Invalid move. Try again.");
           } catch (IOException e1) {
-            continue;
+            throw new IllegalStateException("State not valid");
           }
         }
         try {
           this.ap = this.ap.append(model.getGameState());
         } catch (IOException e) {
-          continue;
+          throw new IllegalStateException("State not valid");
         }
         resetVal();
       }
