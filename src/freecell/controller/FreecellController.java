@@ -13,7 +13,6 @@ import freecell.model.PileType;
  */
 public class FreecellController implements IFreecellController {
 
-
   private  Readable rd;
   private  Appendable ap;
   private PileType sourcePileType = null;

@@ -1,6 +1,5 @@
 package freecell.model;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class FreecellMultiMoveModel extends FreecellModel {
@@ -61,7 +60,7 @@ public class FreecellMultiMoveModel extends FreecellModel {
             && destPileNumber < noOfCascadePiles) {
       if (cardIndex <= this.cascade.get(sourcePileNumber).size() - 1) {
         int size = this.cascade.get(sourcePileNumber).size();
-        List<Card> sublist = this.cascade.get(sourcePileNumber).subList(cardIndex, size-1);
+        List<Card> sublist = this.cascade.get(sourcePileNumber).subList(cardIndex, size);
 
         if (checkBuild(sublist) /*&& sublist.size() <= number*/) {
           Card c = sublist.get(0);

@@ -5,6 +5,7 @@ import java.util.List;
 
 import freecell.model.Card;
 import freecell.model.FreecellModel;
+import freecell.model.FreecellMultiMoveModel;
 import freecell.model.FreecellOperations;
 import freecell.model.PileType;
 import freecell.model.Suit;
@@ -20,6 +21,7 @@ import static org.junit.Assert.assertTrue;
 public class FreecellModelTest {
   private FreecellOperations fcoDefault;
   private FreecellOperations fcoOpen4Cascade6;
+  private FreecellOperations fcoOpen4Cascade8;
 
   /**
    * Sets up freecell game models.
@@ -28,6 +30,35 @@ public class FreecellModelTest {
   public void setUp() {
     fcoDefault = FreecellModel.getBuilder().build();
     fcoOpen4Cascade6 = FreecellModel.getBuilder().cascades(6).opens(4).build();
+    fcoOpen4Cascade8 = FreecellMultiMoveModel.getBuilder().cascades(8).opens(4).build();
+  }
+
+  /**
+   * Test to check if multi move works as expected.
+   */
+  @Test
+  public void testMultiMove() {
+    List<Card> defaultDeck = fcoOpen4Cascade8.getDeck();
+    fcoOpen4Cascade8.startGame(defaultDeck, false);
+    fcoOpen4Cascade8.move(PileType.CASCADE, 2, 6, PileType.OPEN, 0);
+    fcoOpen4Cascade8.move(PileType.CASCADE, 2, 5, PileType.OPEN, 1);
+    fcoOpen4Cascade8.move(PileType.CASCADE, 6, 5, PileType.CASCADE, 2);
+//    fcoOpen4Cascade8.move(PileType.CASCADE, 0, 6, PileType.OPEN, 2);
+//    fcoOpen4Cascade8.move(PileType.CASCADE, 0, 5, PileType.OPEN, 3);
+//    fcoOpen4Cascade8.move(PileType.CASCADE, 0, 4, PileType.CASCADE, 2);
+    System.out.println(fcoOpen4Cascade8.getGameState());
+  }
+
+
+  @Test
+  public void multiMove() {
+    fcoOpen4Cascade8.move(PileType.CASCADE, 3, 6,
+            PileType.OPEN, 0);
+    fcoOpen4Cascade8.move(PileType.CASCADE, 3, 5,
+            PileType.CASCADE, 0);
+    fcoOpen4Cascade8.move(PileType.CASCADE, 7, 5,
+            PileType.CASCADE, 0);
+    System.out.println(fcoOpen4Cascade8.getGameState());
   }
 
   /**
@@ -108,7 +139,8 @@ public class FreecellModelTest {
     List<Card> defaultDeck = fcoDefault.getDeck();
     fcoDefault.startGame(defaultDeck, false);
     fcoDefault.move(PileType.CASCADE, 7, 5, PileType.OPEN, 0);
-    fcoDefault.move(PileType.CASCADE, 7, 4, PileType.FOUNDATION, 0);
+    fcoDefault.move(PileType.CASCADE, 7, 4,
+            PileType.FOUNDATION, 0);
     assertEquals(fcoDefault.getGameState(), "F1: A♠\n" +
             "F2:\n" +
             "F3:\n" +
