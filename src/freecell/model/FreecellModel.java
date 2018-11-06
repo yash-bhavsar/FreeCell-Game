@@ -17,10 +17,10 @@ public class FreecellModel implements FreecellOperations<Card> {
 
   protected HashMap<Integer, LinkedList<Card>> cascade;
   private HashMap<Integer, LinkedList<Card>> foundation;
-  private HashMap<Integer, Card> open;
+  protected HashMap<Integer, Card> open;
 
   protected int noOfCascadePiles;
-  private int noOfOpenPiles;
+  protected int noOfOpenPiles;
   private String gameState;
   protected boolean gameStarted;
 
