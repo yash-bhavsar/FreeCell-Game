@@ -15,14 +15,14 @@ import java.util.stream.Collectors;
  */
 public class FreecellModel implements FreecellOperations<Card> {
 
-  private HashMap<Integer, LinkedList<Card>> cascade;
+  protected HashMap<Integer, LinkedList<Card>> cascade;
   private HashMap<Integer, LinkedList<Card>> foundation;
   private HashMap<Integer, Card> open;
 
-  private int noOfCascadePiles;
+  protected int noOfCascadePiles;
   private int noOfOpenPiles;
   private String gameState;
-  private boolean gameStarted;
+  protected boolean gameStarted;
 
   /**
    * Instantiates a new Freecell model.
@@ -30,7 +30,7 @@ public class FreecellModel implements FreecellOperations<Card> {
    * @param noOfCascadePiles the no of cascade piles
    * @param noOfOpenPiles    the no of open piles
    */
-  private FreecellModel(int noOfCascadePiles, int noOfOpenPiles) {
+  protected FreecellModel(int noOfCascadePiles, int noOfOpenPiles) {
     cascade = new HashMap<>();
     foundation = new HashMap<>();
     open = new HashMap<>();
@@ -139,7 +139,7 @@ public class FreecellModel implements FreecellOperations<Card> {
    * @param sourceCard Card from source Pile.
    * @return true if the cards are of different color, false otherwise.
    */
-  private boolean checkAlternateSuit(Card destCard, Card sourceCard) {
+  protected boolean checkAlternateSuit(Card destCard, Card sourceCard) {
     if (destCard.getSuit() == Suit.SPADE || destCard.getSuit() == Suit.CLUB) {
       return sourceCard.getSuit() == Suit.HEART || sourceCard.getSuit() == Suit.DIAMOND;
     } else if (destCard.getSuit() == Suit.HEART || destCard.getSuit() == Suit.DIAMOND) {
@@ -148,7 +148,6 @@ public class FreecellModel implements FreecellOperations<Card> {
       return false;
     }
   }
-
 
   /**
    * Move a card from the given source pile to the given destination pile, if the move is valid.
@@ -191,7 +190,7 @@ public class FreecellModel implements FreecellOperations<Card> {
    * @param destPileNumber   the pile number of the given type, starting at 0
    * @throws IllegalArgumentException if the move is not possible {@link PileType})
    */
-  private void moveCascadeToCascade(int sourcePileNumber, int cardIndex, int destPileNumber) {
+  protected void moveCascadeToCascade(int sourcePileNumber, int cardIndex, int destPileNumber) {
     if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
             && destPileNumber < noOfCascadePiles) {
       if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
@@ -219,7 +218,7 @@ public class FreecellModel implements FreecellOperations<Card> {
    * @param destPileNumber   the pile number of the given type, starting at 0
    * @throws IllegalArgumentException if the move is not possible {@link PileType})
    */
-  private void moveCascadeToOpen(int sourcePileNumber, int cardIndex, int destPileNumber) {
+  protected void moveCascadeToOpen(int sourcePileNumber, int cardIndex, int destPileNumber) {
     if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
             && destPileNumber < noOfOpenPiles) {
       if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
@@ -246,7 +245,7 @@ public class FreecellModel implements FreecellOperations<Card> {
    * @param destPileNumber   the pile number of the given type, starting at 0
    * @throws IllegalArgumentException if the move is not possible {@link PileType})
    */
-  private void moveCascadeToFoundation(int sourcePileNumber, int cardIndex, int destPileNumber) {
+  protected void moveCascadeToFoundation(int sourcePileNumber, int cardIndex, int destPileNumber) {
     if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
             && destPileNumber < 4) {
       if (cardIndex == this.cascade.get(sourcePileNumber).size() - 1) {
@@ -283,7 +282,7 @@ public class FreecellModel implements FreecellOperations<Card> {
    * @param destPileNumber   the pile number of the given type, starting at 0
    * @throws IllegalArgumentException if the move is not possible {@link PileType})
    */
-  private void moveOpenToCascade(int sourcePileNumber, int cardIndex, int destPileNumber) {
+  protected void moveOpenToCascade(int sourcePileNumber, int cardIndex, int destPileNumber) {
     if (sourcePileNumber >= 0 && sourcePileNumber < noOfOpenPiles && destPileNumber >= 0
             && destPileNumber < noOfCascadePiles) {
       Card c;
@@ -312,7 +311,7 @@ public class FreecellModel implements FreecellOperations<Card> {
    * @param destPileNumber   the pile number of the given type, starting at 0
    * @throws IllegalArgumentException if the move is not possible {@link PileType})
    */
-  private void moveOpenToFoundation(int sourcePileNumber, int cardIndex, int destPileNumber) {
+  protected void moveOpenToFoundation(int sourcePileNumber, int cardIndex, int destPileNumber) {
     if (sourcePileNumber >= 0 && sourcePileNumber < 4 && destPileNumber >= 0
             && destPileNumber < noOfCascadePiles) {
       Card c;
@@ -351,7 +350,7 @@ public class FreecellModel implements FreecellOperations<Card> {
    * @param destPileNumber   the pile number of the given type, starting at 0
    * @throws IllegalArgumentException if the move is not possible {@link PileType})
    */
-  private void moveOpenToOpen(int sourcePileNumber, int cardIndex, int destPileNumber) {
+  protected void moveOpenToOpen(int sourcePileNumber, int cardIndex, int destPileNumber) {
     if (sourcePileNumber >= 0 && sourcePileNumber < noOfOpenPiles && destPileNumber >= 0
             && destPileNumber < noOfOpenPiles) {
       if (this.open.get(sourcePileNumber) != null && this.open.get(destPileNumber) == null) {
