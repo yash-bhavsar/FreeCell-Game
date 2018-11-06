@@ -73,7 +73,6 @@ public class FreecellModelTest {
             "C7: 7♣, 2♦, 10♦, 5♥, K♥, 8♠\n" +
             "C8: 8♣, 3♦, J♦, 6♥, A♠, 9♠");
   }
-  
 
   /**
    * Test move cascade to empty open.
