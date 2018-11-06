@@ -1,6 +1,5 @@
 package freecell.model;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class FreecellMultiMoveModel extends FreecellModel {
@@ -61,16 +60,21 @@ public class FreecellMultiMoveModel extends FreecellModel {
             && destPileNumber < noOfCascadePiles) {
       if (cardIndex <= this.cascade.get(sourcePileNumber).size() - 1) {
         int size = this.cascade.get(sourcePileNumber).size();
-        List<Card> sublist = this.cascade.get(sourcePileNumber).subList(cardIndex, size-1);
-
-        if (checkBuild(sublist) /*&& sublist.size() <= number*/) {
+        List<Card> sublist = this.cascade.get(sourcePileNumber).subList(cardIndex, size);
+        int number = (int) ((countEmptyOpenPiles() + 1) * Math.pow(2, countEmptyCascadePiles()));
+        if (checkBuild(sublist) && sublist.size() <= number) {
           Card c = sublist.get(0);
-          Card dPLCard = this.cascade.get(destPileNumber).getLast();
-          if (((dPLCard.getNumber() - 1) == c.getNumber()) && checkAlternateSuit(dPLCard, c)) {
+          if (!this.cascade.get(destPileNumber).isEmpty()) {
+            Card dPLCard = this.cascade.get(destPileNumber).getLast();
+            if (((dPLCard.getNumber() - 1) == c.getNumber()) && checkAlternateSuit(dPLCard, c)) {
+              this.cascade.get(destPileNumber).addAll(sublist);
+              this.cascade.get(sourcePileNumber).removeAll(sublist);
+            } else {
+              throw new IllegalArgumentException("Invalid Card");
+            }
+          } else {
             this.cascade.get(destPileNumber).addAll(sublist);
             this.cascade.get(sourcePileNumber).removeAll(sublist);
-          } else {
-            throw new IllegalArgumentException("Invalid Card");
           }
         }
       } else {
@@ -81,11 +85,31 @@ public class FreecellMultiMoveModel extends FreecellModel {
     }
   }
 
+  private int countEmptyOpenPiles() {
+    int noOfEmptyOpenPiles = 0;
+    for (int i = 0; i < this.noOfOpenPiles; i++) {
+      if (this.open.get(i) == null) {
+        noOfEmptyOpenPiles += 1;
+      }
+    }
+    return noOfEmptyOpenPiles;
+  }
+
+  private int countEmptyCascadePiles() {
+    int noOfEmptyCascadePiles = 0;
+    for (int i = 0; i < this.noOfCascadePiles; i++) {
+      if (this.cascade.get(i).isEmpty()) {
+        noOfEmptyCascadePiles += 1;
+      }
+    }
+    return noOfEmptyCascadePiles;
+  }
+
   private boolean checkBuild(List<Card> cardList) {
-    for (int i = 0 ; i < cardList.size(); i++) {
-      if (i != cardList.size()) {
+    for (int i = 0; i < cardList.size(); i++) {
+      if (i != (cardList.size() - 1)) {
         Card c1 = cardList.get(i);
-        Card c2 = cardList.get(i+1);
+        Card c2 = cardList.get(i + 1);
         if (!(((c2.getNumber() - 1) == c1.getNumber()) && checkAlternateSuit(c1, c2))) {
           return false;
         }
