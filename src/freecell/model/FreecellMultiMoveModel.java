@@ -58,7 +58,7 @@ public class FreecellMultiMoveModel extends FreecellModel {
   protected void moveCascadeToCascade(int sourcePileNumber, int cardIndex, int destPileNumber) {
     if (sourcePileNumber >= 0 && sourcePileNumber < noOfCascadePiles && destPileNumber >= 0
             && destPileNumber < noOfCascadePiles) {
-      if (cardIndex <= this.cascade.get(sourcePileNumber).size() - 1) {
+      if (cardIndex <= this.cascade.get(sourcePileNumber).size() - 1 && cardIndex >= 0) {
         int size = this.cascade.get(sourcePileNumber).size();
         List<Card> sublist = this.cascade.get(sourcePileNumber).subList(cardIndex, size);
         int number = (int) ((countEmptyOpenPiles() + 1) * Math.pow(2, countEmptyCascadePiles()));
