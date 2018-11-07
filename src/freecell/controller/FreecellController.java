@@ -37,91 +37,6 @@ public class FreecellController implements IFreecellController {
     quit = false;
   }
 
-  /*@Override
-  public void playGame(List deck, FreecellOperations model, boolean shuffle)
-          throws IllegalArgumentException, IllegalStateException {
-    if (deck == null) {
-      throw new IllegalArgumentException("deck");
-    }
-
-    if (model == null) {
-      throw new IllegalArgumentException("model not initialized");
-    }
-
-    try {
-      model.startGame(deck, shuffle);
-      ap = ap.append("\n").append(model.getGameState());
-    } catch (Exception e) {
-      throw new IllegalArgumentException("Start game failed");
-    }
-
-    int number;
-
-    Scanner sc = new Scanner(rd);
-    while (sc.hasNext()) {
-      String newString = sc.next();
-      char pileType = newString.charAt(0);
-      if (Character.isLetter(pileType)) {
-        if ('Q' == Character.toUpperCase(pileType)) {
-          try {
-            ap = ap.append("\nGame quit prematurely.");
-            return;
-          } catch (IOException e) {
-            throw new IllegalStateException("Not valid state");
-          }
-        } else {
-          PileType p = getPileType(Character.toUpperCase(pileType), sc);
-          if (p == null) {
-            return;
-          }
-          number = getPileNumber(newString.substring(1), sc);
-          if (number == Integer.MAX_VALUE) {
-            return;
-          }
-          if (sourcePileType == null) {
-            sourcePileType = p;
-          } else if (destPileType == null) {
-            destPileType = p;
-          }
-        }
-      } else {
-        number = getPileNumber(newString, sc);
-      }
-
-      if (sourcePileNumber == Integer.MAX_VALUE) {
-        sourcePileNumber = number;
-      } else if (cardIndex == Integer.MAX_VALUE) {
-        cardIndex = number;
-      } else if (destPileNumber == Integer.MAX_VALUE) {
-        destPileNumber = number;
-      }
-
-      if (sourcePileType != null && destPileType != null
-              && sourcePileNumber != Integer.MAX_VALUE
-              && destPileNumber != Integer.MAX_VALUE && cardIndex != Integer.MAX_VALUE) {
-        try {
-          model.move(sourcePileType, (sourcePileNumber - 1), (cardIndex - 1),
-                  destPileType, (destPileNumber - 1));
-          if (model.isGameOver()) {
-            ap = ap.append("\n").append(model.getGameState()).append("\nGame Over.");
-            return;
-          } else {
-            ap = ap.append("\n").append(model.getGameState());
-          }
-        } catch (Exception e) {
-          try {
-            ap.append("\nInvalid move. Try again. ").append(e.getMessage()).append(":" +
-                    sourcePileType + " " + destPileType + " " + sourcePileNumber +
-                    " " + cardIndex + " " + destPileNumber);
-          } catch (IOException e1) {
-            throw new IllegalStateException("State not valid");
-          }
-        }
-        resetVal();
-      }
-    }
-  }*/
-
   @Override
   public void playGame(List deck, FreecellOperations model, boolean shuffle)
           throws IllegalArgumentException, IllegalStateException {
@@ -254,28 +169,9 @@ public class FreecellController implements IFreecellController {
    * @return the number.
    */
   private int getPileNumber(String s, Scanner sc) {
-//    int number = Integer.MAX_VALUE;
-//    while (true) {
-//      try {
-//        number = Integer.parseInt(s);
-//        return number;
-//      } catch (Exception ne) {
-//        if (s.toUpperCase().equals("Q")) {
-//          try {
-//            ap = ap.append("\nGame quit prematurely.");
-//            break;
-//          } catch (IOException e) {
-//            throw new IllegalStateException("Not valid state");
-//          }
-//        } else {
-//          return getPileNumber(sc.next(), sc);
-//        }
-//      }
-//    }
-
     if (s.matches("\\s*[Q|q]+\\s*")) {
       quit = true;
-      return -77;
+      return -5000;
     }
     try {
       return Integer.parseInt(s);
