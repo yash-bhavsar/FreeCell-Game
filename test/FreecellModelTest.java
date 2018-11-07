@@ -5,6 +5,7 @@ import java.util.List;
 
 import freecell.model.Card;
 import freecell.model.FreecellModel;
+import freecell.model.FreecellMultiMoveModel;
 import freecell.model.FreecellOperations;
 import freecell.model.PileType;
 import freecell.model.Suit;
@@ -643,4 +644,95 @@ public class FreecellModelTest {
   public void testInvalidCard() {
     Card c = new Card(Suit.CLUB, 14);
   }
+
+//  /**
+//   * This method tests valid move from cascade to cascade pile.
+//   */
+//  @Test
+//  public void moveValidCardCascadeToCascade() {
+//    FreecellOperations freecellOperations;
+//    freecellOperations = FreecellMultiMoveModel
+//            .getBuilder()
+//            .cascades(15)
+//            .build();
+//
+//    String[] cardStrings = {"3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A", "2"};
+//    String suitsChars = "\u2666\u2663\u2665\u2660";
+//    List<Card> deck = createDeck(cardStrings, suitsChars);
+//    freecellOperations.startGame(deck, false);
+//    assertEquals("F1:\n"
+//            + "F2:\n"
+//            + "F3:\n"
+//            + "F4:\n"
+//            + "O1:\n"
+//            + "O2:\n"
+//            + "O3:\n"
+//            + "O4:\n"
+//            + "C1: 3♦, 5♣, 7♥, 9♠\n"
+//            + "C2: 4♦, 6♣, 8♥, 10♠\n"
+//            + "C3: 5♦, 7♣, 9♥, J♠\n"
+//            + "C4: 6♦, 8♣, 10♥, Q♠\n"
+//            + "C5: 7♦, 9♣, J♥, K♠\n"
+//            + "C6: 8♦, 10♣, Q♥, A♠\n"
+//            + "C7: 9♦, J♣, K♥, 2♠\n"
+//            + "C8: 10♦, Q♣, A♥\n"
+//            + "C9: J♦, K♣, 2♥\n"
+//            + "C10: Q♦, A♣, 3♠\n"
+//            + "C11: K♦, 2♣, 4♠\n"
+//            + "C12: A♦, 3♥, 5♠\n"
+//            + "C13: 2♦, 4♥, 6♠\n"
+//            + "C14: 3♣, 5♥, 7♠\n"
+//            + "C15: 4♣, 6♥, 8♠", freecellOperations.getGameState());
+//    freecellOperations.move(PileType.CASCADE,
+//            5, 3, PileType.CASCADE, 8);
+//    assertEquals("F1:\n" +
+//            "F2:\n" +
+//            "F3:\n" +
+//            "F4:\n" +
+//            "O1:\n" +
+//            "O2:\n" +
+//            "O3:\n" +
+//            "O4:\n" +
+//            "C1: 3♦, 5♣, 7♥, 9♠\n" +
+//            "C2: 4♦, 6♣, 8♥, 10♠\n" +
+//            "C3: 5♦, 7♣, 9♥, J♠\n" +
+//            "C4: 6♦, 8♣, 10♥, Q♠\n" +
+//            "C5: 7♦, 9♣, J♥, K♠\n" +
+//            "C6: 8♦, 10♣, Q♥\n" +
+//            "C7: 9♦, J♣, K♥, 2♠\n" +
+//            "C8: 10♦, Q♣, A♥\n" +
+//            "C9: J♦, K♣, 2♥, A♠\n" +
+//            "C10: Q♦, A♣, 3♠\n" +
+//            "C11: K♦, 2♣, 4♠\n" +
+//            "C12: A♦, 3♥, 5♠\n" +
+//            "C13: 2♦, 4♥, 6♠\n" +
+//            "C14: 3♣, 5♥, 7♠\n" +
+//            "C15: 4♣, 6♥, 8♠", freecellOperations.getGameState());
+//
+//    freecellOperations.move(PileType.CASCADE,
+//            8, 2, PileType.CASCADE, 9);
+//    assertEquals("F1:\n" +
+//            "F2:\n" +
+//            "F3:\n" +
+//            "F4:\n" +
+//            "O1:\n" +
+//            "O2:\n" +
+//            "O3:\n" +
+//            "O4:\n" +
+//            "C1: 3♦, 5♣, 7♥, 9♠\n" +
+//            "C2: 4♦, 6♣, 8♥, 10♠\n" +
+//            "C3: 5♦, 7♣, 9♥, J♠\n" +
+//            "C4: 6♦, 8♣, 10♥, Q♠\n" +
+//            "C5: 7♦, 9♣, J♥, K♠\n" +
+//            "C6: 8♦, 10♣, Q♥\n" +
+//            "C7: 9♦, J♣, K♥, 2♠\n" +
+//            "C8: 10♦, Q♣, A♥\n" +
+//            "C9: J♦, K♣\n" +
+//            "C10: Q♦, A♣, 3♠, 2♥, A♠\n" +
+//            "C11: K♦, 2♣, 4♠\n" +
+//            "C12: A♦, 3♥, 5♠\n" +
+//            "C13: 2♦, 4♥, 6♠\n" +
+//            "C14: 3♣, 5♥, 7♠\n" +
+//            "C15: 4♣, 6♥, 8♠", freecellOperations.getGameState());
+//  }
 }
