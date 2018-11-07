@@ -68,7 +68,7 @@ public class FreecellMultiMoveModel extends FreecellModel {
             Card dPLCard = this.cascade.get(destPileNumber).getLast();
             if (((dPLCard.getNumber() - 1) == c.getNumber()) && checkAlternateSuit(dPLCard, c)) {
               this.cascade.get(destPileNumber).addAll(sublist);
-              this.cascade.get(sourcePileNumber).removeAll(sublist);
+              this.cascade.get(sourcePileNumber).subList(cardIndex, size).clear();
             } else {
               throw new IllegalArgumentException("Invalid Card");
             }
@@ -76,6 +76,8 @@ public class FreecellMultiMoveModel extends FreecellModel {
             this.cascade.get(destPileNumber).addAll(sublist);
             this.cascade.get(sourcePileNumber).removeAll(sublist);
           }
+        } else {
+          throw new IllegalArgumentException("Not enough moves");
         }
       } else {
         throw new IllegalArgumentException("Invalid card index");
@@ -110,7 +112,7 @@ public class FreecellMultiMoveModel extends FreecellModel {
       if (i != (cardList.size() - 1)) {
         Card c1 = cardList.get(i);
         Card c2 = cardList.get(i + 1);
-        if (!(((c2.getNumber() - 1) == c1.getNumber()) && checkAlternateSuit(c1, c2))) {
+        if (!(((c1.getNumber() - 1) == c2.getNumber()) && checkAlternateSuit(c1, c2))) {
           return false;
         }
       } else {
