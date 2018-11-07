@@ -1,11 +1,10 @@
 package freecell.controller;
 
 import java.io.IOException;
-import java.io.StringReader;
+
 import java.util.List;
 import java.util.Scanner;
 
-import freecell.model.FreecellModel;
 import freecell.model.FreecellOperations;
 import freecell.model.PileType;
 
@@ -122,7 +121,8 @@ public class FreecellController implements IFreecellController {
         }
         count = 0;
         try {
-          model.move(sourcePileType, sourcePileNumber - 1, cardIndex - 1, destPileType, destPileNumber - 1);
+          model.move(sourcePileType, sourcePileNumber - 1, cardIndex - 1,
+                  destPileType, destPileNumber - 1);
           try {
             this.ap.append("\n").append(model.getGameState());
           } catch (IOException ioe) {
