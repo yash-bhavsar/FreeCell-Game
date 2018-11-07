@@ -17,7 +17,6 @@ public class FreecellController implements IFreecellController {
 
   private Readable rd;
   private Appendable ap;
-
   private boolean quit;
 
   /**
@@ -56,17 +55,13 @@ public class FreecellController implements IFreecellController {
     }
 
     PileType sourcePileType = null;
-    PileType destPileType = null;
+    PileType destPileType;
     int sourcePileNumber = Integer.MAX_VALUE;
-    int destPileNumber = Integer.MAX_VALUE;
+    int destPileNumber;
     int cardIndex = Integer.MAX_VALUE;
-    
-    
-    int number;
 
     Scanner sc = new Scanner(this.rd);
     int count = 0;
-    int j = 0;
     while (sc.hasNext()) {
       String newString = sc.next();
 
@@ -133,6 +128,13 @@ public class FreecellController implements IFreecellController {
           } catch (IOException ioe) {
             ioe.printStackTrace();
           }
+          if (model.isGameOver()) {
+            try {
+              this.ap.append(model.getGameState()).append("\nGame over.");
+            } catch (IOException ioe) {
+              ioe.printStackTrace();
+            }
+          }
         } catch (IllegalArgumentException | IllegalStateException iae) {
           try {
             this.ap.append("\n").append("Invalid move. Try again. ").append(iae.getMessage());
@@ -140,27 +142,9 @@ public class FreecellController implements IFreecellController {
             ioe.printStackTrace();
           }
         }
-
       }
-
-      if (model.isGameOver()) {
-        try {
-          this.ap.append(model.getGameState()).append("\nGame over.");
-        } catch (IOException ioe) {
-          ioe.printStackTrace();
-        }
-      }
-      j += 1;
     }
   }
-
-//  private void resetVal() {
-//    sourcePileNumber = Integer.MAX_VALUE;
-//    sourcePileType = null;
-//    destPileNumber = Integer.MAX_VALUE;
-//    destPileType = null;
-//    cardIndex = Integer.MAX_VALUE;
-//  }
 
   /**
    * Private method to get the source, destination pile number and card index.
@@ -194,11 +178,6 @@ public class FreecellController implements IFreecellController {
     } else if (pileType == 'F') {
       return PileType.FOUNDATION;
     } else {
-      /*try {
-        ap.append(pileType);
-      } catch (IOException e) {
-        throw new IllegalStateException("pata nai");
-      }*/
       if (Character.toUpperCase(pileType) == 'Q') {
         try {
           this.ap.append("\nGame quit prematurely.");
@@ -210,21 +189,5 @@ public class FreecellController implements IFreecellController {
       }
     }
     return null;
-  }
-
-  public static void main(String[] args) {
-//    Readable readable = new StringReader("C1 1 F1 C2 1 F1 C3 1 F1 C4 1 F1 C5 1 F1 " +
-//            "C6 1 F1 C7 1 F1 C8 1 F1 C9 1 F1 C10 1 F1 C11 1 F1 C12 1 F1 C13 1 F1 " +
-//            "C14 1 F2 C15 1 F2 C16 1 F2 C17 1 F2 C18 1 F2 C19 1 F2 C20 1 F2 C21 1 F2 " +
-//            "C22 1 F2 C23 1 F2 C24 1 F2 C25 1 F2 C26 1 F2 C27 1 F3 C28 1 F3 C29 1 F3 " +
-//            "C30 1 F3 C31 1 F3 C32 1 F3 C33 1 F3 C34 1 F3 C35 1 F3 C36 1 F3 C37 1 F3 " +
-//            "C38 1 F3 C39 1 F3 C40 1 F4 C40 1 F4 C41 1 F4 C42 1 F4 C43 1 F4 C44 1 F4 " +
-//            "C45 1 F4 C46 1 F4 C47 1 F4 C48 1 F4 C49 1 F4 C50 1 F4 C51 1 F4 C52 1 F4 C1 1 F1");
-    Readable readable = new StringReader("C1 0 F1");
-    Appendable appendable = new StringBuffer();
-    IFreecellController freecellController = new FreecellController(readable, appendable);
-    FreecellOperations model = FreecellModel.getBuilder().cascades(52).opens(4).build();
-    freecellController.playGame(model.getDeck(), model, false);
-    System.out.println(appendable);
   }
 }
