@@ -1,2 +1,2 @@
 # FreeCell-Game
-Freecell game in Java with GUI
+Freecell game in Java console
